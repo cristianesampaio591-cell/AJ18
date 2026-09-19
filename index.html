@@ -2,221 +2,46 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AJ18</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#080d19;color:#fff}
+header{background:#101a30;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:28px;font-weight:bold;color:#25e889}
+button{border:0;border-radius:9px;padding:11px 15px;font-weight:bold;cursor:pointer}
+.login{background:#263452;color:#fff}
+.register,.deposit{background:#25e889;color:#06150e}
+.withdraw{background:#ffbf4b;color:#241600}
+header button{margin-left:5px}
+.banner{padding:28px 18px;background:linear-gradient(135deg,#101a30,#1c3157)}
+.banner h1{font-size:30px;margin-bottom:8px}
+.banner p{color:#bdc7d9}
+.buttons{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.container{max-width:1100px;margin:auto;padding:20px}
+h2{margin:25px 0 15px}
+.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.game{background:#151f36;border:1px solid #2b3956;border-radius:14px;overflow:hidden;cursor:pointer}
+.game-image{height:120px;display:flex;align-items:center;justify-content:center;font-size:50px;background:linear-gradient(135deg,#273b63,#10192d)}
+.game-name{padding:12px;font-weight:bold}
+.popular{font-size:11px;color:#25e889;margin-top:5px}
+.promo{background:#172440;border:1px solid #2c3c5d;padding:18px;border-radius:12px;line-height:1.6}
+footer{text-align:center;padding:30px;color:#8793aa;font-size:12px}
 
-body{
-  background:#090b12;
-  color:#fff;
-}
-
-header{
-  background:#111522;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:10;
-  border-bottom:1px solid #252a3a;
-}
-
-.logo{
-  font-size:28px;
-  font-weight:bold;
-  color:#00e676;
-}
-
-.header-buttons{
-  display:flex;
-  gap:8px;
-}
-
-button{
-  border:0;
-  border-radius:8px;
-  padding:11px 15px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.btn-green{
-  background:#00e676;
-  color:#06100a;
-}
-
-.btn-dark{
-  background:#242a3a;
-  color:#fff;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:20px;
-}
-
-.hero{
-  background:linear-gradient(135deg,#101827,#172238);
-  border-radius:15px;
-  padding:25px;
-  margin-bottom:20px;
-}
-
-.hero h1{
-  color:#00e676;
-  margin-bottom:10px;
-}
-
-.balance{
-  background:#111522;
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:20px;
-}
-
-.balance strong{
-  font-size:25px;
-  color:#00e676;
-}
-
-.actions{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:15px;
-}
-
-.games-title{
-  margin:20px 0 12px;
-}
-
-.games{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-}
-
-.game{
-  background:#111522;
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.game:hover{
-  transform:translateY(-3px);
-}
-
-.game img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  display:block;
-}
-
-.game-info{
-  padding:10px;
-}
-
-.game-info h3{
-  font-size:15px;
-}
-
-.game-info p{
-  color:#aaa;
-  font-size:12px;
-  margin-top:5px;
-}
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:100;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-box{
-  width:100%;
-  max-width:420px;
-  background:#111522;
-  border-radius:15px;
-  padding:22px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  right:15px;
-  top:12px;
-  background:none;
-  color:#fff;
-  font-size:22px;
-}
-
-input{
-  width:100%;
-  padding:13px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #303649;
-  background:#090b12;
-  color:#fff;
-}
-
-.form-button{
-  width:100%;
-  margin-top:10px;
-}
-
-.qr{
-  width:220px;
-  height:220px;
-  display:block;
-  margin:20px auto;
-  object-fit:contain;
-  background:#fff;
-  padding:8px;
-  border-radius:8px;
-}
-
-.notice{
-  background:#1b2030;
-  border-radius:8px;
-  padding:12px;
-  margin-top:12px;
-  color:#bbb;
-  font-size:13px;
-}
-
-.hidden{
-  display:none!important;
-}
-
-footer{
-  text-align:center;
-  color:#777;
-  padding:30px 15px;
-}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;justify-content:center;align-items:center;padding:18px}
+.modal-box{width:100%;max-width:420px;background:#121c32;border:1px solid #354462;border-radius:16px;padding:22px;position:relative}
+.close{position:absolute;right:12px;top:7px;background:none;color:white;font-size:28px;padding:0}
+input{width:100%;padding:13px;margin:7px 0;border-radius:9px;border:1px solid #3b4b6b;background:#0a1222;color:#fff}
+.modal-button{width:100%;margin-top:10px}
+.qr{display:block;width:100%;max-width:300px;margin:20px auto;background:#fff;padding:8px;border-radius:8px}
+.info{color:#adb8ca;font-size:13px;line-height:1.5}
 
 @media(max-width:600px){
-  .actions{
-    grid-template-columns:1fr;
-  }
+.games{grid-template-columns:repeat(2,1fr)}
+.game-image{height:100px}
+.logo{font-size:23px}
+header button{padding:8px;font-size:12px}
 }
 </style>
 </head>
@@ -224,169 +49,88 @@ footer{
 <body>
 
 <header>
-  <div class="logo">AJ18</div>
-
-  <div class="header-buttons">
-
-    <button class="btn-dark" id="loginBtn"
-      onclick="openModal('loginModal')">
-      Entrar
-    </button>
-
-    <button class="btn-green" id="registerBtn"
-      onclick="openModal('registerModal')">
-      Criar conta
-    </button>
-
-    <button class="btn-dark hidden" id="logoutBtn"
-      onclick="logout()">
-      Sair
-    </button>
-
-  </div>
+<div class="logo">AJ18</div>
+<div>
+<button class="login" onclick="abrir('login')">Entrar</button>
+<button class="register" onclick="abrir('cadastro')">Criar conta</button>
+</div>
 </header>
 
+<section class="banner">
+<h1>Bem-vindo à AJ18</h1>
+<p>Escolha um jogo ou acesse sua conta.</p>
+
+<div class="buttons">
+<button class="deposit" onclick="abrir('deposito')">💳 Depositar</button>
+<button class="withdraw" onclick="abrir('saque')">💰 Saque</button>
+</div>
+</section>
 
 <main class="container">
 
-<section class="hero">
-  <h1>Bem-vindo à AJ18</h1>
-  <p>Jogos, promoções e entretenimento em um só lugar.</p>
-</section>
+<h2>🎰 Jogos</h2>
 
+<div class="games">
 
-<section class="balance">
+<div class="game" onclick="jogo('Tigrinho')">
+<div class="game-image">🐯</div>
+<div class="game-name">Tigrinho<div class="popular">POPULAR</div></div>
+</div>
 
-  <p>Saldo</p>
+<div class="game" onclick="jogo('Touro')">
+<div class="game-image">🐂</div>
+<div class="game-name">Touro<div class="popular">POPULAR</div></div>
+</div>
 
-  <strong id="balance">R$ 0,00</strong>
+<div class="game" onclick="jogo('Fortune')">
+<div class="game-image">💎</div>
+<div class="game-name">Fortune</div>
+</div>
 
-  <div class="actions">
+<div class="game" onclick="jogo('777')">
+<div class="game-image">🎰</div>
+<div class="game-name">777</div>
+</div>
 
-    <button class="btn-green" onclick="openDeposit()">
-      💰 Depositar
-    </button>
+<div class="game" onclick="jogo('Crash')">
+<div class="game-image">🚀</div>
+<div class="game-name">Crash</div>
+</div>
 
-    <button class="btn-dark" onclick="openWithdraw()">
-      💸 Sacar
-    </button>
+<div class="game" onclick="jogo('Roleta')">
+<div class="game-image">🎡</div>
+<div class="game-name">Roleta</div>
+</div>
 
-    <button class="btn-dark"
-      onclick="openModal('supportModal')">
-      🛟 Suporte
-    </button>
+</div>
 
-  </div>
+<h2>🎁 Promoções</h2>
 
-</section>
-
-
-<h2 class="games-title">🎮 Jogos populares</h2>
-
-<section class="games">
-
-  <div class="game" onclick="openGame('Tigrinho')">
-    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Tigrinho</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Touro')">
-    <img src="https://images.unsplash.com/photo-1518544887879-7a2b2f4b4f91?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Touro</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Fortuna')">
-    <img src="https://images.unsplash.com/photo-1518893883800-45cd0954574b?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Fortuna</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Lucky')">
-    <img src="https://images.unsplash.com/photo-1605870445919-838d190e8e1b?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Lucky</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Diamante')">
-    <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Diamante</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('777')">
-    <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>777</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Fortune')">
-    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Fortune</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-
-  <div class="game" onclick="openGame('Gold')">
-    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80">
-    <div class="game-info">
-      <h3>Gold</h3>
-      <p>Jogar agora</p>
-    </div>
-  </div>
-
-</section>
+<div class="promo">
+<strong>Promoções especiais</strong><br>
+Confira as condições e regras antes de participar.
+</div>
 
 </main>
 
-
 <footer>
-AJ18 © 2026 — Plataforma
+AJ18 © 2026
 </footer>
 
 
 <!-- LOGIN -->
 
-<div class="modal" id="loginModal">
-
+<div class="modal" id="login">
 <div class="modal-box">
 
-<button class="close"
-onclick="closeModal('loginModal')">×</button>
+<button class="close" onclick="fechar()">×</button>
 
 <h2>Entrar</h2>
 
-<input id="loginEmail"
-type="email"
-placeholder="E-mail">
+<input type="text" placeholder="E-mail ou telefone">
+<input type="password" placeholder="Senha">
 
-<input id="loginPassword"
-type="password"
-placeholder="Senha">
-
-<button class="btn-green form-button"
-onclick="login()">
+<button class="modal-button deposit" onclick="alert('Login demonstrativo.')">
 Entrar
 </button>
 
@@ -396,28 +140,19 @@ Entrar
 
 <!-- CADASTRO -->
 
-<div class="modal" id="registerModal">
-
+<div class="modal" id="cadastro">
 <div class="modal-box">
 
-<button class="close"
-onclick="closeModal('registerModal')">×</button>
+<button class="close" onclick="fechar()">×</button>
 
 <h2>Criar conta</h2>
 
-<input id="registerName"
-placeholder="Nome">
+<input type="text" placeholder="Nome completo">
+<input type="text" placeholder="CPF">
+<input type="email" placeholder="E-mail">
+<input type="password" placeholder="Senha">
 
-<input id="registerEmail"
-type="email"
-placeholder="E-mail">
-
-<input id="registerPassword"
-type="password"
-placeholder="Senha">
-
-<button class="btn-green form-button"
-onclick="register()">
+<button class="modal-button deposit" onclick="alert('Cadastro demonstrativo.')">
 Criar conta
 </button>
 
@@ -427,50 +162,22 @@ Criar conta
 
 <!-- DEPÓSITO -->
 
-<div class="modal" id="depositModal">
-
+<div class="modal" id="deposito">
 <div class="modal-box">
 
-<button class="close"
-onclick="closeModal('depositModal')">×</button>
+<button class="close" onclick="fechar()">×</button>
 
-<h2>💰 Depositar via PIX</h2>
+<h2>💳 Depósito via Pix</h2>
 
-<input
-id="depositAmount"
-type="number"
-min="1"
-step="0.01"
-placeholder="Valor do depósito">
+<p class="info">
+Escaneie o QR Code abaixo para realizar o pagamento.
+</p>
 
-<button class="btn-green form-button"
-onclick="createPixCharge()">
-Gerar cobrança PIX
-</button>
+<img src="qrcode.jpg" class="qr" alt="QR Code Pix">
 
-<div id="pixArea" class="hidden">
-
-  <img id="pixQr"
-       class="qr"
-       alt="QR Code PIX">
-
-  <input
-    id="pixCopyPaste"
-    readonly
-    placeholder="Código PIX">
-
-  <button
-    class="btn-dark form-button"
-    onclick="copyPix()">
-    Copiar código PIX
-  </button>
-
-  <p class="notice">
-    Após o pagamento, o servidor deverá confirmar
-    automaticamente a cobrança junto ao provedor PIX.
-  </p>
-
-</div>
+<p class="info">
+Após o pagamento, a confirmação precisa ser feita por uma integração segura com um provedor de pagamentos.
+</p>
 
 </div>
 </div>
@@ -478,34 +185,23 @@ Gerar cobrança PIX
 
 <!-- SAQUE -->
 
-<div class="modal" id="withdrawModal">
-
+<div class="modal" id="saque">
 <div class="modal-box">
 
-<button class="close"
-onclick="closeModal('withdrawModal')">×</button>
+<button class="close" onclick="fechar()">×</button>
 
-<h2>💸 Solicitar saque</h2>
+<h2>💰 Solicitar saque</h2>
 
-<input
-id="withdrawAmount"
-type="number"
-min="1"
-step="0.01"
-placeholder="Valor">
+<input type="number" placeholder="Valor do saque">
+<input type="text" placeholder="Chave Pix">
 
-<input
-id="withdrawPix"
-placeholder="Chave PIX">
-
-<button class="btn-green form-button"
-onclick="requestWithdraw()">
+<button class="modal-button withdraw"
+onclick="alert('Solicitação demonstrativa.')">
 Solicitar saque
 </button>
 
-<p class="notice">
-A solicitação deverá ser enviada ao backend,
-que fará as validações e o processamento PIX.
+<p class="info">
+O processamento real de saques exige backend e integração de pagamentos.
 </p>
 
 </div>
@@ -514,41 +210,15 @@ que fará as validações e o processamento PIX.
 
 <!-- JOGO -->
 
-<div class="modal" id="gameModal">
-
+<div class="modal" id="jogo">
 <div class="modal-box">
 
-<button class="close"
-onclick="closeModal('gameModal')">×</button>
+<button class="close" onclick="fechar()">×</button>
 
-<h2 id="gameTitle"></h2>
+<h2 id="nomeJogo"></h2>
 
-<p style="margin-top:15px;color:#bbb;">
-Jogo selecionado.
-</p>
-
-<button class="btn-green form-button"
-onclick="closeModal('gameModal')">
-Continuar
-</button>
-
-</div>
-</div>
-
-
-<!-- SUPORTE -->
-
-<div class="modal" id="supportModal">
-
-<div class="modal-box">
-
-<button class="close"
-onclick="closeModal('supportModal')">×</button>
-
-<h2>🛟 Atendimento</h2>
-
-<p style="margin-top:15px;color:#bbb;">
-Entre em contato com o suporte da plataforma.
+<p class="info">
+Área do jogo.
 </p>
 
 </div>
@@ -557,489 +227,21 @@ Entre em contato com o suporte da plataforma.
 
 <script>
 
-let currentUser =
-JSON.parse(localStorage.getItem("aj18_currentUser")) || null;
-
-let users =
-JSON.parse(localStorage.getItem("aj18_users")) || [];
-
-let balance =
-Number(localStorage.getItem("aj18_balance")) || 0;
-
-
-function money(value){
-
-return Number(value).toLocaleString("pt-BR",{
-style:"currency",
-currency:"BRL"
-});
-
-}
-
-
-function updateBalance(){
-
-document.getElementById("balance").textContent =
-money(balance);
-
-localStorage.setItem(
-"aj18_balance",
-balance
-);
-
-}
-
-
-function openModal(id){
-
+function abrir(id){
+fechar();
 document.getElementById(id).style.display="flex";
-
 }
 
-
-function closeModal(id){
-
-document.getElementById(id).style.display="none";
-
-}
-
-
-/* CADASTRO */
-
-function register(){
-
-const name =
-document.getElementById("registerName").value.trim();
-
-const email =
-document.getElementById("registerEmail").value.trim();
-
-const password =
-document.getElementById("registerPassword").value;
-
-if(!name || !email || !password){
-
-alert("Preencha todos os campos.");
-
-return;
-
-}
-
-if(users.some(u => u.email === email)){
-
-alert("Este e-mail já está cadastrado.");
-
-return;
-
-}
-
-const user = {
-name,
-email,
-password
-};
-
-users.push(user);
-
-localStorage.setItem(
-"aj18_users",
-JSON.stringify(users)
-);
-
-currentUser=user;
-
-localStorage.setItem(
-"aj18_currentUser",
-JSON.stringify(currentUser)
-);
-
-closeModal("registerModal");
-
-updateInterface();
-
-alert("Conta criada com sucesso!");
-
-}
-
-
-/* LOGIN */
-
-function login(){
-
-const email =
-document.getElementById("loginEmail").value.trim();
-
-const password =
-document.getElementById("loginPassword").value;
-
-const user =
-users.find(
-u =>
-u.email === email &&
-u.password === password
-);
-
-if(!user){
-
-alert("E-mail ou senha incorretos.");
-
-return;
-
-}
-
-currentUser=user;
-
-localStorage.setItem(
-"aj18_currentUser",
-JSON.stringify(currentUser)
-);
-
-closeModal("loginModal");
-
-updateInterface();
-
-alert("Login realizado com sucesso!");
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-currentUser=null;
-
-localStorage.removeItem(
-"aj18_currentUser"
-);
-
-updateInterface();
-
-}
-
-
-/* INTERFACE */
-
-function updateInterface(){
-
-const loginBtn =
-document.getElementById("loginBtn");
-
-const registerBtn =
-document.getElementById("registerBtn");
-
-const logoutBtn =
-document.getElementById("logoutBtn");
-
-if(currentUser){
-
-loginBtn.classList.add("hidden");
-
-registerBtn.classList.add("hidden");
-
-logoutBtn.classList.remove("hidden");
-
-}else{
-
-loginBtn.classList.remove("hidden");
-
-registerBtn.classList.remove("hidden");
-
-logoutBtn.classList.add("hidden");
-
-}
-
-updateBalance();
-
-}
-
-
-/* DEPÓSITO */
-
-function openDeposit(){
-
-if(!currentUser){
-
-alert("Entre ou crie uma conta primeiro.");
-
-openModal("loginModal");
-
-return;
-
-}
-
-document.getElementById("pixArea")
-.classList.add("hidden");
-
-openModal("depositModal");
-
-}
-
-
-/*
-  Esta função chama o backend.
-  O backend deverá conversar com o provedor PIX/Inter.
-
-  Exemplo de resposta esperada:
-
-  {
-    "qrCode": "imagem-ou-data-url",
-    "pixCopiaCola": "000201..."
-  }
-*/
-
-async function createPixCharge(){
-
-const amount =
-Number(
-document.getElementById("depositAmount").value
-);
-
-if(!amount || amount <= 0){
-
-alert("Digite um valor válido.");
-
-return;
-
-}
-
-try{
-
-/*
-  SUBSTITUA pela URL do seu backend.
-
-  Não coloque certificado,
-  client secret ou senha do Inter aqui.
-*/
-
-const response = await fetch(
-"/api/pix/create-charge",
-{
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-amount:amount,
-userId:currentUser.email
-})
-
-}
-);
-
-if(!response.ok){
-
-throw new Error("Falha ao criar cobrança");
-
-}
-
-const data =
-await response.json();
-
-document.getElementById("pixQr").src =
-data.qrCode;
-
-document.getElementById("pixCopyPaste").value =
-data.pixCopiaCola;
-
-document.getElementById("pixArea")
-.classList.remove("hidden");
-
-}catch(error){
-
-alert(
-"Não foi possível gerar a cobrança PIX. Configure o backend do provedor."
-);
-
-}
-
-}
-
-
-/* COPIAR PIX */
-
-function copyPix(){
-
-const input =
-document.getElementById("pixCopyPaste");
-
-input.select();
-
-navigator.clipboard.writeText(
-input.value
-);
-
-alert("Código PIX copiado.");
-
-}
-
-
-/* SAQUE */
-
-function openWithdraw(){
-
-if(!currentUser){
-
-alert("Entre ou crie uma conta primeiro.");
-
-openModal("loginModal");
-
-return;
-
-}
-
-openModal("withdrawModal");
-
-}
-
-
-async function requestWithdraw(){
-
-const amount =
-Number(
-document.getElementById("withdrawAmount").value
-);
-
-const pix =
-document.getElementById("withdrawPix").value.trim();
-
-if(!amount || amount <= 0){
-
-alert("Digite um valor válido.");
-
-return;
-
-}
-
-if(!pix){
-
-alert("Informe a chave PIX.");
-
-return;
-
-}
-
-try{
-
-/*
-  O backend deve validar:
-
-  - usuário
-  - saldo
-  - limites
-  - regras de saque
-  - autenticação
-  - prevenção contra fraude
-
-  e então solicitar a transferência PIX.
-*/
-
-const response = await fetch(
-"/api/pix/withdraw",
-{
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-
-amount:amount,
-
-pixKey:pix,
-
-userId:currentUser.email
-
-})
-
-}
-);
-
-if(!response.ok){
-
-throw new Error("Falha no saque");
-
-}
-
-const data =
-await response.json();
-
-closeModal("withdrawModal");
-
-document.getElementById(
-"withdrawAmount"
-).value="";
-
-document.getElementById(
-"withdrawPix"
-).value="";
-
-alert(
-data.message ||
-"Solicitação de saque enviada."
-);
-
-}catch(error){
-
-alert(
-"Não foi possível enviar o saque. Configure o backend do provedor."
-);
-
-}
-
-}
-
-
-/* JOGOS */
-
-function openGame(name){
-
-if(!currentUser){
-
-alert(
-"Entre ou crie uma conta para acessar os jogos."
-);
-
-openModal("loginModal");
-
-return;
-
-}
-
-document.getElementById(
-"gameTitle"
-).textContent=name;
-
-openModal("gameModal");
-
-}
-
-
-/* FECHAR MODAIS */
-
-window.addEventListener(
-"click",
-function(event){
-
-document
-.querySelectorAll(".modal")
-.forEach(modal => {
-
-if(event.target === modal){
-
-modal.style.display="none";
-
-}
-
+function fechar(){
+document.querySelectorAll(".modal").forEach(function(x){
+x.style.display="none";
 });
+}
 
-});
-
-
-updateInterface();
+function jogo(nome){
+document.getElementById("nomeJogo").innerText="🎮 "+nome;
+abrir("jogo");
+}
 
 </script>
 
