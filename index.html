@@ -1,32 +1,160 @@
-from pathlib import Path import base64
-qr_path = Path("/mnt/data/1000001931.jpg") qr = base64.b64encode(qr_path.read_bytes()).decode()
-html = f"""
-�
-T45 — Plataforma *{{box-sizing:border-box}}body{{margin:0;background:#0b0d0e;color:#fff;font-family:Arial,sans-serif}}button{{font:inherit;cursor:pointer}} header{{position:sticky;top:0;z-index:20;background:#141516;border-bottom:1px solid #292929;padding:12px}} .top{{display:flex;justify-content:space-between;align-items:center;gap:10px}}.logo{{font-size:30px;font-weight:900;font-style:italic}}.logo b{{color:#ffc400}} .saldo{{background:#252525;border-radius:20px;padding:9px 12px;font-size:13px}} .cats{{display:flex;gap:8px;overflow:auto;margin-top:12px}}.cats button{{min-width:78px;background:#201712;color:#ddd;border:1px solid #633116;border-radius:12px;padding:9px}} main{{max-width:1100px;margin:auto;padding:16px 16px 100px}}.page{{display:none}}.page.active{{display:block}} .banner{{background:linear-gradient(100deg,#41150d,#18100d);border:1px solid #783317;border-radius:16px;padding:18px;margin-bottom:18px}} .banner h1{{margin:0 0 6px;font-size:25px}}.section-title{{font-size:20px;font-weight:800;margin:18px 0 10px}} .grid{{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}}.card{{background:#17191a;border:1px solid #282828;border-radius:13px;overflow:hidden}} .art{{height:145px;display:flex;align-items:center;justify-content:center;font-size:65px;background:linear-gradient(145deg,#7f2115,#24104b,#0b5060)}} .card h3{{font-size:13px;margin:9px}}.play{{width:calc(100% - 18px);margin:0 9px 9px;padding:10px;border:0;border-radius:9px;background:#e76b0d;color:#fff;font-weight:800}} .info{{background:#17191a;border-radius:14px;padding:16px;margin-top:12px;border:1px solid #292929}}.info p{{color:#ccc;line-height:1.5}} input,select{{width:100%;padding:13px;margin:7px 0;background:#0d0f10;color:#fff;border:1px solid #444;border-radius:9px}} .action{{width:100%;padding:13px;border:0;border-radius:9px;background:#e86c0b;color:#fff;font-weight:800;margin-top:8px}} .bottom{{position:fixed;bottom:0;left:0;right:0;height:74px;background:#1b110d;border-top:1px solid #633116;display:grid;grid-template-columns:repeat(5,1fr);z-index:30}} .bottom button{{background:none;border:0;color:#ddd;font-size:11px}}.bottom b{{display:block;font-size:23px;margin-bottom:2px}}.bottom .dep{{color:#ffc400}} .overlay{{display:none;position:fixed;inset:0;background:#000c;z-index:100;align-items:center;justify-content:center;padding:15px}}.modal{{position:relative;width:min(480px,100%);max-height:92vh;overflow:auto;background:#17191a;border:1px solid #713414;border-radius:18px;padding:20px}} .close{{position:absolute;right:10px;top:6px;border:0;background:none;color:#fff;font-size:30px}}.qr{{display:block;width:min(350px,100%);margin:15px auto;background:#fff;padding:8px;border-radius:9px}} .game{{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#f5c74e,#9c2815 30%,#25090b 70%,#050505);z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column}} .game.show{{display:flex}}.homegame{{position:absolute;top:14px;left:14px;border:2px solid #fff;border-radius:50%;background:#0009;color:#fff;width:44px;height:44px}} .reels{{display:grid;grid-template-columns:repeat(3,85px);gap:5px;background:#0007;padding:8px;border:2px solid #e2aa31;border-radius:12px;margin:15px}}.reel{{width:85px;height:85px;display:flex;align-items:center;justify-content:center;font-size:45px;background:linear-gradient(145deg,#fff0a0,#b77717,#6d170e);border:2px solid #ffd34c;border-radius:7px}} .spin{{width:70px;height:70px;border-radius:50%;border:4px solid #ffd34c;background:#c73a10;color:#fff;font-size:30px}} @media(min-width:700px){{.grid{{grid-template-columns:repeat(4,1fr)}}}} 
-T45.com
-🪙 R$ 0,00
-🔥 Hot👑 Slots🎰 Ao vivo🎯 Bingo🐟 Peixe 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Jogos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #38bdf8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .hero {
+            background: linear-gradient(to right, #1e293b, #0f172a);
+            padding: 3rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid #334155;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #f8fafc;
+        }
+        .hero p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #0ea5e9;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background-color: #1e293b;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img {
+            height: 160px;
+            background-color: #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+        .card-body {
+            padding: 1.25rem;
+        }
+        .card-body h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        .card-body p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">GameHub</div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Jogos</a>
+            <a href="#">Categorias</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
 
-�
-🎮 Bem-vindo
-Plataforma de demonstração com navegação, jogos e páginas de conta.
-🔥 Jogos em destaque
+    <div class="container">
+        <section class="hero">
+            <h1>Bem-vindo à sua nova Plataforma de Jogos</h1>
+            <p>Explore os melhores títulos, jogue direto no navegador e divirta-se com nossa seleção exclusiva.</p>
+            <a href="#" class="btn">Explorar Jogos</a>
+        </section>
 
-�
-👑 Slots
-Categoria de jogos de demonstração.
-🎰 Ao vivo
-Página de jogos ao vivo. A integração real exige fornecedor autorizado.
-🎯 Bingo
-Área de bingo da demonstração.
-🐟 Peixe
-Área de jogos de peixe da demonstração.
-
-�
-🎁 Promoções
-Promoções
-Área para banners, regras e campanhas promocionais.
-Ver promoção
-💳 Saque
-Solicitar saque
-Solicitar
+        <h2>Destaques</h2>
+        <br>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img">Imagem do Jogo 1</div>
+                <div class="card-body">
+                    <h3>Cyber Quest</h3>
+                    <p>Uma aventura futurista cheia de ação em mundo aberto.</p>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">Imagem do Jogo 2</div>
+                <div class="card-body">
+                    <h3>Pixel Dungeon</h3>
+                    <p>Explore masmorras clássicas no estilo retrô com muita dificuldade.</p>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">Imagem do Jogo 3</div>
+                <div class="card-body">
+                    <h3>Speed Racer X</h3>
+                    <p>Corridas eletrizantes em pistas insanas contra o tempo.</p>
+                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
