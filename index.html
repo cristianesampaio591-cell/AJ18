@@ -2,280 +2,231 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AJ18</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AJ18 • HOT</title>
 <style>
-*{
-    box-sizing:border-box;
+  *{box-sizing:border-box}
+  body{
     margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#080b12;
+    background:#111210;
     color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
     min-height:100vh;
-}
-
-header{
-    background:#101522;
-    padding:16px 20px;
+  }
+  .topbar{
+    height:74px;
+    background:#242424;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid #252c3b;
-    position:sticky;
-    top:0;
-    z-index:10;
-}
-
-.logo{
+    gap:18px;
+    padding:0 22px;
     font-size:28px;
-    font-weight:bold;
-}
-
-.logo span{
-    color:#00e676;
-}
-
-button{
-    border:0;
-    border-radius:8px;
-    padding:11px 16px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.login{
-    background:#00e676;
-    color:#001b0c;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
-
-.banner{
-    background:linear-gradient(135deg,#132033,#0b412a);
-    border-radius:15px;
-    padding:30px 22px;
-    margin-bottom:25px;
-}
-
-.banner h1{
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.banner p{
-    color:#cbd5e1;
-}
-
-.section-title{
-    margin:25px 0 15px;
-    font-size:22px;
-}
-
-.games{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
-    gap:14px;
-}
-
-.game{
-    background:#111722;
-    border:1px solid #252d3c;
-    border-radius:12px;
-    padding:25px 10px;
-    text-align:center;
-    transition:.2s;
-}
-
-.game:hover{
-    transform:translateY(-3px);
-    border-color:#00e676;
-}
-
-.game-icon{
-    font-size:42px;
-    margin-bottom:12px;
-}
-
-.game button{
-    margin-top:12px;
-    width:100%;
-    background:#00e676;
-}
-
-.wallet{
-    background:#111722;
-    border-radius:14px;
-    padding:20px;
-    margin-top:20px;
-}
-
-.balance{
-    font-size:30px;
-    color:#00e676;
-    margin:10px 0 18px;
-}
-
-.wallet-buttons{
+    font-weight:700;
+  }
+  .back{font-size:38px;font-weight:300;line-height:1}
+  .title{letter-spacing:.2px}
+  .wrap{padding:30px 30px 24px}
+  .search{
+    height:80px;
+    background:#2d2c2b;
+    border-radius:44px;
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.deposit{
-    background:#00e676;
-}
-
-.withdraw{
-    background:#273142;
-    color:white;
-}
-
-.menu{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:12px;
-    margin-top:20px;
-}
-
-.menu button{
-    background:#151d2b;
-    color:#fff;
-    border:1px solid #293447;
-}
-
-footer{
-    text-align:center;
-    padding:30px 20px;
-    color:#7d8798;
-    margin-top:30px;
-}
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
     align-items:center;
-    justify-content:center;
-    z-index:50;
-    padding:20px;
-}
-
-.modal-box{
-    background:#111722;
+    justify-content:flex-end;
+    padding:0 25px;
+    margin-bottom:34px;
+  }
+  .search input{
     width:100%;
-    max-width:400px;
-    border-radius:14px;
-    padding:25px;
-}
-
-.modal-box h2{
-    margin-bottom:20px;
-}
-
-input{
-    width:100%;
-    padding:13px;
-    margin:7px 0;
-    border-radius:8px;
-    border:1px solid #30394b;
-    background:#080b12;
-    color:white;
-}
-
-.modal-box button{
-    width:100%;
-    margin-top:10px;
-}
-
-.close{
-    background:#273142;
+    background:transparent;
+    border:0;
+    outline:0;
     color:#fff;
-}
-
-.notice{
-    font-size:12px;
-    color:#8994a7;
-    margin-top:15px;
-    line-height:1.5;
-}
+    font-size:22px;
+  }
+  .searchIcon{
+    width:42px;height:42px;border:5px solid #fff;border-radius:50%;
+    position:relative;flex:none;
+  }
+  .searchIcon:after{
+    content:"";position:absolute;width:19px;height:5px;background:#fff;
+    right:-14px;bottom:-7px;transform:rotate(48deg);border-radius:4px;
+  }
+  .tabs{display:flex;gap:14px;align-items:center;margin-bottom:26px;overflow:auto}
+  .tab{
+    border:1px solid #aaa;background:transparent;color:#ddd;
+    border-radius:8px;padding:11px 17px;font-size:18px;white-space:nowrap;
+  }
+  .tab.hot{
+    border:0;background:linear-gradient(135deg,#ff7b39,#ffbd5b);
+    color:#17120d;font-weight:700;
+  }
+  .fire{font-size:39px;margin-right:2px}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;
+  }
+  .card{
+    position:relative;
+    aspect-ratio:.72;
+    border-radius:8px;
+    overflow:hidden;
+    background:linear-gradient(160deg,var(--c1),var(--c2));
+    box-shadow:0 5px 16px rgba(0,0,0,.28);
+  }
+  .art{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:72px;
+    filter:drop-shadow(0 6px 5px rgba(0,0,0,.4));
+  }
+  .shine{
+    position:absolute;inset:-40%;
+    background:linear-gradient(120deg,transparent 42%,rgba(255,255,255,.18) 50%,transparent 58%);
+    transform:rotate(12deg);
+  }
+  .fav{
+    position:absolute;right:9px;top:9px;
+    width:31px;height:31px;border-radius:50%;
+    background:rgba(0,0,0,.38);border:1px solid #ddd;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;z-index:3;
+  }
+  .brand{
+    position:absolute;top:9px;left:9px;
+    font-size:9px;font-weight:800;letter-spacing:.5px;
+    background:rgba(255,255,255,.8);color:#222;padding:2px 4px;border-radius:2px;
+  }
+  .name{
+    position:absolute;left:8px;right:8px;bottom:11px;
+    text-align:center;font-size:20px;font-weight:900;
+    line-height:1.03;text-shadow:0 2px 4px #000;
+    z-index:2;
+  }
+  .pages{
+    display:flex;justify-content:center;align-items:center;gap:12px;
+    margin:36px 0 5px;
+  }
+  .page{
+    min-width:46px;height:46px;padding:0 12px;border:1px solid #777;
+    background:#191919;color:#eee;border-radius:8px;font-size:19px;
+  }
+  .page.active{background:#333;border:0}
+  .footer{
+    border-top:1px solid #333;margin-top:28px;padding:20px;text-align:center;
+    color:#888;font-size:13px;
+  }
+  @media(max-width:700px){
+    .topbar{height:74px;padding:0 18px;font-size:27px}
+    .wrap{padding:30px 29px 18px}
+    .search{height:80px;margin-bottom:34px}
+    .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+    .name{font-size:17px}
+    .art{font-size:58px}
+  }
+  @media(max-width:520px){
+    .wrap{padding-left:18px;padding-right:18px}
+    .grid{gap:12px}
+    .name{font-size:13px}
+    .art{font-size:45px}
+    .fav{width:27px;height:27px;font-size:15px;right:5px;top:5px}
+    .brand{font-size:7px;left:5px;top:5px}
+    .tabs{gap:10px}
+    .tab{font-size:15px;padding:10px 14px}
+  }
 </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <span class="back">‹</span>
+    <span class="title">HOT</span>
+  </header>
 
-<header>
-    <div class="logo">AJ<span>18</span></div>
-    <button class="login" onclick="abrirLogin()">Entrar</button>
-</header>
+  <main class="wrap">
+    <div class="search">
+      <input id="search" type="search" placeholder="Pesquisar jogos..." aria-label="Pesquisar jogos">
+      <span class="searchIcon"></span>
+    </div>
 
-<main class="container">
+    <nav class="tabs">
+      <span class="fire">🔥</span>
+      <button class="tab hot" data-filter="todos">Todos</button>
+      <button class="tab" data-filter="recente">Recente</button>
+      <button class="tab" data-filter="favoritos">Favoritos</button>
+    </nav>
 
-    <section class="banner">
-        <h1>Bem-vindo à AJ18</h1>
-        <p>Uma nova experiência de entretenimento online.</p>
-    </section>
+    <section class="grid" id="grid"></section>
 
-    <h2 class="section-title">🎰 Jogos populares</h2>
+    <div class="pages">
+      <button class="page">‹</button>
+      <button class="page active">1</button>
+      <button class="page">2</button>
+      <button class="page">3</button>
+      <button class="page">4</button>
+      <button class="page">…</button>
+      <button class="page">›</button>
+    </div>
+  </main>
 
-    <section class="games">
+  <footer class="footer">
+    AJ18 • Interface demonstrativa
+  </footer>
 
-        <div class="game">
-            <div class="game-icon">🐯</div>
-            <h3>Tigre</h3>
-            <button onclick="jogo('Tigre')">Jogar</button>
-        </div>
+<script>
+const games = [
+ {name:"FORTUNE TIGER",icon:"🐯",c1:"#f6a21a",c2:"#6e170d"},
+ {name:"FORTUNE RABBIT",icon:"🐰",c1:"#c86cff",c2:"#092c6f"},
+ {name:"FORTUNE DRAGON",icon:"🐲",c1:"#c127ff",c2:"#4a0b8d"},
+ {name:"FORTUNE SNAKE",icon:"🐍",c1:"#ed55c4",c2:"#11327a"},
+ {name:"BIG BASS SPLASH",icon:"🎣",c1:"#5d8d9e",c2:"#c0a91c"},
+ {name:"JOKER'S JEWELS",icon:"🃏",c1:"#4c08a1",c2:"#210033"},
+ {name:"FORTUNE GEMS 3",icon:"💎",c1:"#4bb9d8",c2:"#3d087f"},
+ {name:"FORTUNE GEMS 2",icon:"👑",c1:"#4212c0",c2:"#6a139b"},
+ {name:"FORTUNE HORSE",icon:"🐴",c1:"#7b39bb",c2:"#1e1d65"},
+ {name:"MONEY COMING",icon:"💵",c1:"#da561e",c2:"#5b0909"},
+ {name:"FORTUNE OX",icon:"🐂",c1:"#b9a11e",c2:"#6b1a0a"},
+ {name:"DOUBLE FORTUNE",icon:"🧧",c1:"#ef3127",c2:"#8e0610"},
+ {name:"FORTUNE MOUSE",icon:"🐭",c1:"#f58a9d",c2:"#8d3d42"},
+ {name:"PINATA WINS",icon:"🪅",c1:"#c89a6e",c2:"#613d20"},
+ {name:"GANESHA GOLD",icon:"🐘",c1:"#d6a35d",c2:"#7d321e"},
+ {name:"JACKPOT JOKER",icon:"🤡",c1:"#d600d6",c2:"#5224a8"},
+ {name:"LUCKY FORTUNE",icon:"🍀",c1:"#e13d1c",c2:"#4b0b06"},
+ {name:"LUCKY 7",icon:"7️⃣",c1:"#1eb85d",c2:"#073b78"},
+ {name:"DRAGON WIN",icon:"🐉",c1:"#7a35e7",c2:"#ec5b31"},
+ {name:"GOLDEN QUEEN",icon:"👸",c1:"#2369c7",c2:"#6b238d"}
+];
 
-        <div class="game">
-            <div class="game-icon">🐂</div>
-            <h3>Touro</h3>
-            <button onclick="jogo('Touro')">Jogar</button>
-        </div>
+const grid = document.getElementById("grid");
+const search = document.getElementById("search");
 
-        <div class="game">
-            <div class="game-icon">💎</div>
-            <h3>Diamante</h3>
-            <button onclick="jogo('Diamante')">Jogar</button>
-        </div>
+function render(list){
+  grid.innerHTML = list.map((g,i)=>`
+    <article class="card" style="--c1:${g.c1};--c2:${g.c2}" title="${g.name}">
+      <div class="brand">AJ18 • GAMES</div>
+      <div class="fav">♡</div>
+      <div class="art">${g.icon}</div>
+      <div class="shine"></div>
+      <div class="name">${g.name}</div>
+    </article>
+  `).join("");
+}
+render(games);
 
-        <div class="game">
-            <div class="game-icon">🍀</div>
-            <h3>Sorte</h3>
-            <button onclick="jogo('Sorte')">Jogar</button>
-        </div>
+search.addEventListener("input",()=>{
+  const q=search.value.toLowerCase().trim();
+  render(games.filter(g=>g.name.toLowerCase().includes(q)));
+});
 
-    </section>
-
-    <section class="wallet">
-        <h2>💰 Minha carteira</h2>
-
-        <div class="balance">
-            R$ <span id="saldo">0,00</span>
-        </div>
-
-        <div class="wallet-buttons">
-            <button class="deposit" onclick="deposito()">
-                + Depositar
-            </button>
-
-            <button class="withdraw" onclick="saque()">
-                Sacar
-            </button>
-        </div>
-    </section>
-
-    <h2 class="section-title">Minha conta</h2>
-
-    <section class="menu">
-        <button onclick="abrirLogin()">👤 Minha conta</button>
-        <button onclick="historico()">📜 Histórico</button>
-        <button
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("hot"));
+    btn.classList.add("hot");
+    if(btn.dataset.filter==="favoritos") render(games.slice(0,0));
+    else if(btn.dataset.filter==="recente") render(games.slice(0,8));
+    else render(games);
+  });
+});
+</script>
+</body>
+</html>
