@@ -1,66 +1,281 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJ18</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ18</title>
 
-    header {
-      background: #1c1c1c;
-      padding: 25px;
-    }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-    h1 {
-      margin: 0;
-      color: #00e676;
-    }
+body{
+    background:#080b12;
+    color:#fff;
+    min-height:100vh;
+}
 
-    main {
-      padding: 40px 20px;
-    }
+header{
+    background:#101522;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #252c3b;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
 
-    .card {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 30px;
-      background: #222;
-      border-radius: 15px;
-    }
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
 
-    button {
-      padding: 14px 25px;
-      border: 0;
-      border-radius: 8px;
-      background: #00e676;
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-    }
-  </style>
+.logo span{
+    color:#00e676;
+}
+
+button{
+    border:0;
+    border-radius:8px;
+    padding:11px 16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.login{
+    background:#00e676;
+    color:#001b0c;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+.banner{
+    background:linear-gradient(135deg,#132033,#0b412a);
+    border-radius:15px;
+    padding:30px 22px;
+    margin-bottom:25px;
+}
+
+.banner h1{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.banner p{
+    color:#cbd5e1;
+}
+
+.section-title{
+    margin:25px 0 15px;
+    font-size:22px;
+}
+
+.games{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:14px;
+}
+
+.game{
+    background:#111722;
+    border:1px solid #252d3c;
+    border-radius:12px;
+    padding:25px 10px;
+    text-align:center;
+    transition:.2s;
+}
+
+.game:hover{
+    transform:translateY(-3px);
+    border-color:#00e676;
+}
+
+.game-icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.game button{
+    margin-top:12px;
+    width:100%;
+    background:#00e676;
+}
+
+.wallet{
+    background:#111722;
+    border-radius:14px;
+    padding:20px;
+    margin-top:20px;
+}
+
+.balance{
+    font-size:30px;
+    color:#00e676;
+    margin:10px 0 18px;
+}
+
+.wallet-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.deposit{
+    background:#00e676;
+}
+
+.withdraw{
+    background:#273142;
+    color:white;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+    margin-top:20px;
+}
+
+.menu button{
+    background:#151d2b;
+    color:#fff;
+    border:1px solid #293447;
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#7d8798;
+    margin-top:30px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:20px;
+}
+
+.modal-box{
+    background:#111722;
+    width:100%;
+    max-width:400px;
+    border-radius:14px;
+    padding:25px;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border-radius:8px;
+    border:1px solid #30394b;
+    background:#080b12;
+    color:white;
+}
+
+.modal-box button{
+    width:100%;
+    margin-top:10px;
+}
+
+.close{
+    background:#273142;
+    color:#fff;
+}
+
+.notice{
+    font-size:12px;
+    color:#8994a7;
+    margin-top:15px;
+    line-height:1.5;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>AJ18</h1>
-  </header>
+<header>
+    <div class="logo">AJ<span>18</span></div>
+    <button class="login" onclick="abrirLogin()">Entrar</button>
+</header>
 
-  <main>
-    <div class="card">
-      <h2>Bem-vindo ao AJ18</h2>
-      <p>Seu site está funcionando.</p>
-      <button>Entrar</button>
-    </div>
-  </main>
+<main class="container">
 
-</body>
-</html>
+    <section class="banner">
+        <h1>Bem-vindo à AJ18</h1>
+        <p>Uma nova experiência de entretenimento online.</p>
+    </section>
+
+    <h2 class="section-title">🎰 Jogos populares</h2>
+
+    <section class="games">
+
+        <div class="game">
+            <div class="game-icon">🐯</div>
+            <h3>Tigre</h3>
+            <button onclick="jogo('Tigre')">Jogar</button>
+        </div>
+
+        <div class="game">
+            <div class="game-icon">🐂</div>
+            <h3>Touro</h3>
+            <button onclick="jogo('Touro')">Jogar</button>
+        </div>
+
+        <div class="game">
+            <div class="game-icon">💎</div>
+            <h3>Diamante</h3>
+            <button onclick="jogo('Diamante')">Jogar</button>
+        </div>
+
+        <div class="game">
+            <div class="game-icon">🍀</div>
+            <h3>Sorte</h3>
+            <button onclick="jogo('Sorte')">Jogar</button>
+        </div>
+
+    </section>
+
+    <section class="wallet">
+        <h2>💰 Minha carteira</h2>
+
+        <div class="balance">
+            R$ <span id="saldo">0,00</span>
+        </div>
+
+        <div class="wallet-buttons">
+            <button class="deposit" onclick="deposito()">
+                + Depositar
+            </button>
+
+            <button class="withdraw" onclick="saque()">
+                Sacar
+            </button>
+        </div>
+    </section>
+
+    <h2 class="section-title">Minha conta</h2>
+
+    <section class="menu">
+        <button onclick="abrirLogin()">👤 Minha conta</button>
+        <button onclick="historico()">📜 Histórico</button>
+        <button
