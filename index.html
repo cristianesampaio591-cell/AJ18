@@ -1,249 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AJ18</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#080d19;color:#fff}
-header{background:#101a30;padding:15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:28px;font-weight:bold;color:#25e889}
-button{border:0;border-radius:9px;padding:11px 15px;font-weight:bold;cursor:pointer}
-.login{background:#263452;color:#fff}
-.register,.deposit{background:#25e889;color:#06150e}
-.withdraw{background:#ffbf4b;color:#241600}
-header button{margin-left:5px}
-.banner{padding:28px 18px;background:linear-gradient(135deg,#101a30,#1c3157)}
-.banner h1{font-size:30px;margin-bottom:8px}
-.banner p{color:#bdc7d9}
-.buttons{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-.container{max-width:1100px;margin:auto;padding:20px}
-h2{margin:25px 0 15px}
-.games{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.game{background:#151f36;border:1px solid #2b3956;border-radius:14px;overflow:hidden;cursor:pointer}
-.game-image{height:120px;display:flex;align-items:center;justify-content:center;font-size:50px;background:linear-gradient(135deg,#273b63,#10192d)}
-.game-name{padding:12px;font-weight:bold}
-.popular{font-size:11px;color:#25e889;margin-top:5px}
-.promo{background:#172440;border:1px solid #2c3c5d;padding:18px;border-radius:12px;line-height:1.6}
-footer{text-align:center;padding:30px;color:#8793aa;font-size:12px}
-
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:50;justify-content:center;align-items:center;padding:18px}
-.modal-box{width:100%;max-width:420px;background:#121c32;border:1px solid #354462;border-radius:16px;padding:22px;position:relative}
-.close{position:absolute;right:12px;top:7px;background:none;color:white;font-size:28px;padding:0}
-input{width:100%;padding:13px;margin:7px 0;border-radius:9px;border:1px solid #3b4b6b;background:#0a1222;color:#fff}
-.modal-button{width:100%;margin-top:10px}
-.qr{display:block;width:100%;max-width:300px;margin:20px auto;background:#fff;padding:8px;border-radius:8px}
-.info{color:#adb8ca;font-size:13px;line-height:1.5}
-
-@media(max-width:600px){
-.games{grid-template-columns:repeat(2,1fr)}
-.game-image{height:100px}
-.logo{font-size:23px}
-header button{padding:8px;font-size:12px}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">AJ18</div>
-<div>
-<button class="login" onclick="abrir('login')">Entrar</button>
-<button class="register" onclick="abrir('cadastro')">Criar conta</button>
-</div>
-</header>
-
-<section class="banner">
-<h1>Bem-vindo à AJ18</h1>
-<p>Escolha um jogo ou acesse sua conta.</p>
-
-<div class="buttons">
-<button class="deposit" onclick="abrir('deposito')">💳 Depositar</button>
-<button class="withdraw" onclick="abrir('saque')">💰 Saque</button>
-</div>
-</section>
-
-<main class="container">
-
-<h2>🎰 Jogos</h2>
-
-<div class="games">
-
-<div class="game" onclick="jogo('Tigrinho')">
-<div class="game-image">🐯</div>
-<div class="game-name">Tigrinho<div class="popular">POPULAR</div></div>
-</div>
-
-<div class="game" onclick="jogo('Touro')">
-<div class="game-image">🐂</div>
-<div class="game-name">Touro<div class="popular">POPULAR</div></div>
-</div>
-
-<div class="game" onclick="jogo('Fortune')">
-<div class="game-image">💎</div>
-<div class="game-name">Fortune</div>
-</div>
-
-<div class="game" onclick="jogo('777')">
-<div class="game-image">🎰</div>
-<div class="game-name">777</div>
-</div>
-
-<div class="game" onclick="jogo('Crash')">
-<div class="game-image">🚀</div>
-<div class="game-name">Crash</div>
-</div>
-
-<div class="game" onclick="jogo('Roleta')">
-<div class="game-image">🎡</div>
-<div class="game-name">Roleta</div>
-</div>
-
-</div>
-
-<h2>🎁 Promoções</h2>
-
-<div class="promo">
-<strong>Promoções especiais</strong><br>
-Confira as condições e regras antes de participar.
-</div>
-
-</main>
-
-<footer>
-AJ18 © 2026
-</footer>
-
-
-<!-- LOGIN -->
-
-<div class="modal" id="login">
-<div class="modal-box">
-
-<button class="close" onclick="fechar()">×</button>
-
-<h2>Entrar</h2>
-
-<input type="text" placeholder="E-mail ou telefone">
-<input type="password" placeholder="Senha">
-
-<button class="modal-button deposit" onclick="alert('Login demonstrativo.')">
-Entrar
-</button>
-
-</div>
-</div>
-
-
-<!-- CADASTRO -->
-
-<div class="modal" id="cadastro">
-<div class="modal-box">
-
-<button class="close" onclick="fechar()">×</button>
-
-<h2>Criar conta</h2>
-
-<input type="text" placeholder="Nome completo">
-<input type="text" placeholder="CPF">
-<input type="email" placeholder="E-mail">
-<input type="password" placeholder="Senha">
-
-<button class="modal-button deposit" onclick="alert('Cadastro demonstrativo.')">
-Criar conta
-</button>
-
-</div>
-</div>
-
-
-<!-- DEPÓSITO -->
-
-<div class="modal" id="deposito">
-<div class="modal-box">
-
-<button class="close" onclick="fechar()">×</button>
-
-<h2>💳 Depósito via Pix</h2>
-
-<p class="info">
-Escaneie o QR Code abaixo para realizar o pagamento.
-</p>
-
-<img src="qrcode.jpg" class="qr" alt="QR Code Pix">
-
-<p class="info">
-Após o pagamento, a confirmação precisa ser feita por uma integração segura com um provedor de pagamentos.
-</p>
-
-</div>
-</div>
-
-
-<!-- SAQUE -->
-
-<div class="modal" id="saque">
-<div class="modal-box">
-
-<button class="close" onclick="fechar()">×</button>
-
-<h2>💰 Solicitar saque</h2>
-
-<input type="number" placeholder="Valor do saque">
-<input type="text" placeholder="Chave Pix">
-
-<button class="modal-button withdraw"
-onclick="alert('Solicitação demonstrativa.')">
-Solicitar saque
-</button>
-
-<p class="info">
-O processamento real de saques exige backend e integração de pagamentos.
-</p>
-
-</div>
-</div>
-
-
-<!-- JOGO -->
-
-<div class="modal" id="jogo">
-<div class="modal-box">
-
-<button class="close" onclick="fechar()">×</button>
-
-<h2 id="nomeJogo"></h2>
-
-<p class="info">
-Área do jogo.
-</p>
-
-</div>
-</div>
-
-
-<script>
-
-function abrir(id){
-fechar();
-document.getElementById(id).style.display="flex";
-}
-
-function fechar(){
-document.querySelectorAll(".modal").forEach(function(x){
-x.style.display="none";
-});
-}
-
-function jogo(nome){
-document.getElementById("nomeJogo").innerText="🎮 "+nome;
-abrir("jogo");
-}
-
-</script>
-
-</body>
-</html>
+qr_path = Path("/mnt/data/1000001931.jpg") qr_b64 = base64.b64encode(qr_path.read_bytes()).decode("ascii")
+games = [ ("Fortune Tiger","🐯"), ("Fortune Rabbit","🐰"), ("Fortune Dragon","🐉"), ("Fortune Snake","🐍"), ("Big Bass Splash","🎣"), ("Joker's Jewels","🃏"), ("Fortune Gems 3","💎"), ("Fortune Gems 2","👑"), ("Fortune Horse","🐴"), ("Money Coming","💰"), ("Fortune Ox","🐂"), ("Double Fortune","🧧") ]
+cards = "\n".join( f''' {emoji}{name}Jogar ''' for name, emoji in games )
+index = f"""
+�
+T45 — Plataforma *{{box-sizing:border-box}} body{{margin:0;background:#0d0f10;color:#fff;font-family:Arial,sans-serif}} button{{font:inherit}} .app{{max-width:760px;margin:auto;min-height:100vh;background:#101112}} header{{position:sticky;top:0;z-index:10;background:#111;padding:14px 16px 10px;border-bottom:1px solid #2b2b2b}} .top{{display:flex;align-items:center;justify-content:space-between}} .logo{{font-size:42px;font-weight:900;font-style:italic;color:#fff}} .logo b{{color:#ffe500}} .balance{{background:#252525;border-radius:22px;padding:9px 13px;font-weight:700}} .menu{{font-size:27px;margin-right:8px;color:#ffb000}} .categories{{display:flex;gap:8px;overflow:auto;padding-top:12px}} .cat{min-width:92px;height:70px;border:1px solid #e55c16;border-radius:18px;background:#1a1716;color:#ddd} .cat b{{display:block;font-size:26px}} .cat.active{{background:#3a1710}} .notice{{margin:14px 16px;padding:12px;border-radius:12px;background:#22170f;border:1px solid #9c4314;color:#ffd7b1;font-size:13px}} .grid{{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 16px 110px}} .game-card{{border:0;border-radius:12px;background:#17191a;color:#fff;overflow:hidden;text-align:left;padding:0;box-shadow:0 2px 7px #0008;cursor:pointer}} .game-art{{height:112px;display:flex;align-items:center;justify-content:center;font-size:58px;background:linear-gradient(145deg,#8b1b14,#30105f,#0d5070)}} .game-card strong{{display:block;padding:8px 8px 2px;font-size:12px}} .game-card span{{display:block;padding:0 8px 9px;color:#ffb347;font-size:11px}} .section{{margin:0 16px 12px;padding:11px 14px;border-radius:14px;background:linear-gradient(90deg,#35100d,#1c1815);border-left:4px solid #ff7800;font-size:18px;font-weight:800}} .bottom{{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(760px,100%);height:78px;background:#24120d;border-top:1px solid #7d310e;display:grid;grid-template-columns:repeat(5,1fr);z-index:20}} .bottom button{{background:none;border:0;color:#ddd;font-size:12px;cursor:pointer}} .bottom b{{display:block;font-size:27px;margin-bottom:3px}} .bottom .deposit{{color:#ffc04a;background:#492014;border-radius:24px 24px 0 0}} .overlay{{display:none;position:fixed;inset:0;background:#000b;z-index:50;align-items:center;justify-content:center;padding:18px}} .modal{{width:min(460px,100%);max-height:90vh;overflow:auto;background:#171819;border:1px solid #6c2b12;border-radius:20px;padding:20px;position:relative}} .close{{position:absolute;right:12px;top:8px;background:none;border:0;color:#fff;font-size:30px;cursor:pointer}} .qr{{width:min(330px,90vw);display:block;margin:12px auto;background:#fff;padding:8px;border-radius:10px}} .copy{{width:100%;padding:13px;border:0;border-radius:10px;background:#f28a17;color:#fff;font-weight:800;cursor:pointer}} .game-screen{{height:350px;border-radius:16px;background:radial-gradient(circle at 50% 35%,#f7c34b,#8d1f13 35%,#18090b 70%);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}} .game-screen .emoji{{font-size:100px}} .play{{padding:14px 28px;border:0;border-radius:30px;background:#ff9c00;color:#160b00;font-weight:900;cursor:pointer}} .form input{{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #444;background:#0d0e0f;color:#fff}} .action{{width:100%;padding:13px;margin-top:8px;border:0;border-radius:10px;background:#e96712;color:#fff;font-weight:800;cursor:pointer}} @media(max-width:520px){{.grid{{grid-template-columns:repeat(2,1fr)}} .game-art{{height:145px}} .logo{{font-size:34px}}}} 
+☰T45.com
+🪙 R$ 0,00 ⟳
+🔥
+Hot👑
+Slots 🎰
+Ao Vivo🎯
+Bingo 🐟
+Peixe🃏
+Pôquer 
+
+�
+Demonstração de interface: os botões e telas funcionam localmente. O QR abaixo é apenas o QR enviado por você; nenhum pagamento é processado por este HTML.
+🎮 Jogos
+{cards}
+
+�
+🎮Início 🎁Promoção 👛Depósito 💳Saque 👤Meu 
+�
+
+�
+const QR = "data:image/jpeg;base64,{qr_b64}"; function openModal(content){{document.getElementById('modal').innerHTML=content;document.getElementById('overlay').style.display='flex'}} function closeModal(){{document.getElementById('overlay').style.display='none'}} function openDeposit(){{ openModal(`<button class="close" onclick="closeModal()">×</button> <h2>💰 Depositar</h2><p>Escaneie o QR Code abaixo com o aplicativo do seu banco.</p> <img class="qr" src="${{QR}}" alt="QR Code para depósito"> <p style="font-size:12px;color:#aaa">O código exibido é exatamente o QR Code enviado nesta conversa.</p> <button class="copy" onclick="alert('QR Code exibido. Para pagamento real é necessário um backend/gateway autorizado.')">Continuar</button>`) }} function openGame(name,emoji){{ openModal(`<button class="close" onclick="closeModal()">×</button> <h2>${{name}}</h2><div class="game-screen"><div class="emoji">${{emoji}}</div><h2>${{name}}</h2> <button class="play" onclick="alert('Tela de jogo aberta. Esta versão é apenas uma demonstração e não realiza apostas com dinheiro real.')">JOGAR</button></div>`) }} function showInfo(title,text){{openModal(`<button class="close" onclick="closeModal()">×</button><h2>${{title}}</h2><p>${{text}}</p><button class="action" onclick="closeModal()">Voltar</button>`)}} function showLogin(){{openModal(`<button class="close" onclick="closeModal()">×</button><h2>👤 Minha conta</h2><div class="form"><input placeholder="E-mail ou telefone"><input type="password" placeholder="Senha"><button class="action" onclick="alert('Demonstração: login ainda não está conectado a um servidor.')">Entrar</button><button class="action" onclick="alert('Demonstração: cadastro ainda não está conectado a um servidor.')">Criar conta</button></div>`)}} function home(){{closeModal();window.scrollTo({{top:0,behavior:'smooth'}})}} 
+�
+"""
+out = Path("/mnt/data/index.html") out.write_text(index, encoding="utf-8") print(f"Arquivo criado: {out} ({out.stat().st_size/1024:.1f} KB)")
