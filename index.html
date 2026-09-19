@@ -203,23 +203,19 @@ input{
   font-size:13px;
 }
 
+.hidden{
+  display:none!important;
+}
+
 footer{
   text-align:center;
   color:#777;
   padding:30px 15px;
 }
 
-.hidden{
-  display:none!important;
-}
-
 @media(max-width:600px){
   .actions{
     grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:24px;
   }
 }
 </style>
@@ -231,557 +227,816 @@ footer{
   <div class="logo">AJ18</div>
 
   <div class="header-buttons">
-    <button class="btn-dark" id="loginBtn" onclick="openModal('loginModal')">
+
+    <button class="btn-dark" id="loginBtn"
+      onclick="openModal('loginModal')">
       Entrar
     </button>
 
-    <button class="btn-green" id="registerBtn" onclick="openModal('registerModal')">
+    <button class="btn-green" id="registerBtn"
+      onclick="openModal('registerModal')">
       Criar conta
     </button>
 
-    <button class="btn-dark hidden" id="logoutBtn" onclick="logout()">
+    <button class="btn-dark hidden" id="logoutBtn"
+      onclick="logout()">
       Sair
     </button>
+
   </div>
 </header>
 
+
 <main class="container">
 
-  <section class="hero">
-    <h1>Bem-vindo à AJ18</h1>
-    <p>Jogos, promoções e entretenimento em um só lugar.</p>
-  </section>
+<section class="hero">
+  <h1>Bem-vindo à AJ18</h1>
+  <p>Jogos, promoções e entretenimento em um só lugar.</p>
+</section>
 
-  <section class="balance">
-    <p>Saldo</p>
-    <strong id="balance">R$ 0,00</strong>
 
-    <div class="actions">
-      <button class="btn-green" onclick="openDeposit()">
-        💰 Depositar
-      </button>
+<section class="balance">
 
-      <button class="btn-dark" onclick="openWithdraw()">
-        💸 Sacar
-      </button>
+  <p>Saldo</p>
 
-      <button class="btn-dark" onclick="openModal('supportModal')">
-        🛟 Suporte
-      </button>
+  <strong id="balance">R$ 0,00</strong>
+
+  <div class="actions">
+
+    <button class="btn-green" onclick="openDeposit()">
+      💰 Depositar
+    </button>
+
+    <button class="btn-dark" onclick="openWithdraw()">
+      💸 Sacar
+    </button>
+
+    <button class="btn-dark"
+      onclick="openModal('supportModal')">
+      🛟 Suporte
+    </button>
+
+  </div>
+
+</section>
+
+
+<h2 class="games-title">🎮 Jogos populares</h2>
+
+<section class="games">
+
+  <div class="game" onclick="openGame('Tigrinho')">
+    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Tigrinho</h3>
+      <p>Jogar agora</p>
     </div>
-  </section>
+  </div>
 
-  <h2 class="games-title">🎮 Jogos populares</h2>
 
-  <section class="games">
-
-    <div class="game" onclick="openGame('Tigrinho')">
-      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80">
-      <div class="game-info">
-        <h3>Tigrinho</h3>
-        <p>Jogar agora</p>
-      </div>
+  <div class="game" onclick="openGame('Touro')">
+    <img src="https://images.unsplash.com/photo-1518544887879-7a2b2f4b4f91?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Touro</h3>
+      <p>Jogar agora</p>
     </div>
+  </div>
 
-    <div class="game" onclick="openGame('Touro')">
-      <img src="https://images.unsplash.com/photo-1518544887879-7a2b2f4b4f91?auto=format&fit=crop&w=600&q=80">
-      <div class="game-info">
-        <h3>Touro</h3>
-        <p>Jogar agora</p>
-      </div>
+
+  <div class="game" onclick="openGame('Fortuna')">
+    <img src="https://images.unsplash.com/photo-1518893883800-45cd0954574b?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Fortuna</h3>
+      <p>Jogar agora</p>
     </div>
+  </div>
 
-    <div class="game" onclick="openGame('Fortuna')">
-      <img src="https://images.unsplash.com/photo-1518893883800-45cd0954574b?auto=format&fit=crop&w=600&q=80">
-      <div class="game-info">
-        <h3>Fortuna</h3>
-        <p>Jogar agora</p>
-      </div>
+
+  <div class="game" onclick="openGame('Lucky')">
+    <img src="https://images.unsplash.com/photo-1605870445919-838d190e8e1b?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Lucky</h3>
+      <p>Jogar agora</p>
     </div>
+  </div>
 
-    <div class="game" onclick="openGame('Lucky')">
-      <img src="https://images.unsplash.com/photo-1605870445919-838d190e8e1b?auto=format&fit=crop&w=600&q=80">
-      <div class="game-info">
-        <h3>Lucky</h3>
-        <p>Jogar agora</p>
-      </div>
+
+  <div class="game" onclick="openGame('Diamante')">
+    <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Diamante</h3>
+      <p>Jogar agora</p>
     </div>
+  </div>
 
-  </section>
+
+  <div class="game" onclick="openGame('777')">
+    <img src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>777</h3>
+      <p>Jogar agora</p>
+    </div>
+  </div>
+
+
+  <div class="game" onclick="openGame('Fortune')">
+    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Fortune</h3>
+      <p>Jogar agora</p>
+    </div>
+  </div>
+
+
+  <div class="game" onclick="openGame('Gold')">
+    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80">
+    <div class="game-info">
+      <h3>Gold</h3>
+      <p>Jogar agora</p>
+    </div>
+  </div>
+
+</section>
 
 </main>
 
+
 <footer>
-  AJ18 © 2026 — Plataforma demonstrativa
+AJ18 © 2026 — Plataforma
 </footer>
 
 
 <!-- LOGIN -->
 
 <div class="modal" id="loginModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('loginModal')">×</button>
+<div class="modal-box">
 
-    <h2>Entrar</h2>
+<button class="close"
+onclick="closeModal('loginModal')">×</button>
 
-    <input id="loginEmail" type="email" placeholder="E-mail">
-    <input id="loginPassword" type="password" placeholder="Senha">
+<h2>Entrar</h2>
 
-    <button class="btn-green form-button" onclick="login()">
-      Entrar
-    </button>
+<input id="loginEmail"
+type="email"
+placeholder="E-mail">
 
-    <div class="notice">
-      Crie uma conta primeiro caso ainda não tenha cadastro.
-    </div>
+<input id="loginPassword"
+type="password"
+placeholder="Senha">
 
-  </div>
+<button class="btn-green form-button"
+onclick="login()">
+Entrar
+</button>
+
+</div>
 </div>
 
 
 <!-- CADASTRO -->
 
 <div class="modal" id="registerModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('registerModal')">×</button>
+<div class="modal-box">
 
-    <h2>Criar conta</h2>
+<button class="close"
+onclick="closeModal('registerModal')">×</button>
 
-    <input id="registerName" type="text" placeholder="Nome">
-    <input id="registerEmail" type="email" placeholder="E-mail">
-    <input id="registerPassword" type="password" placeholder="Senha">
+<h2>Criar conta</h2>
 
-    <button class="btn-green form-button" onclick="register()">
-      Criar conta
-    </button>
+<input id="registerName"
+placeholder="Nome">
 
-  </div>
+<input id="registerEmail"
+type="email"
+placeholder="E-mail">
+
+<input id="registerPassword"
+type="password"
+placeholder="Senha">
+
+<button class="btn-green form-button"
+onclick="register()">
+Criar conta
+</button>
+
+</div>
 </div>
 
 
 <!-- DEPÓSITO -->
 
 <div class="modal" id="depositModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('depositModal')">×</button>
+<div class="modal-box">
 
-    <h2>Depósito PIX</h2>
+<button class="close"
+onclick="closeModal('depositModal')">×</button>
 
-    <p style="margin-top:10px;color:#bbb;">
-      Escaneie o QR Code abaixo.
-    </p>
+<h2>💰 Depositar via PIX</h2>
 
-    <!-- Substitua o endereço abaixo pelo seu QR Code/imagem -->
-    <img
-      class="qr"
-      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=AJ18-DEPOSITO"
-      alt="QR Code PIX">
+<input
+id="depositAmount"
+type="number"
+min="1"
+step="0.01"
+placeholder="Valor do depósito">
 
-    <input id="depositAmount" type="number" min="1" placeholder="Valor do depósito">
+<button class="btn-green form-button"
+onclick="createPixCharge()">
+Gerar cobrança PIX
+</button>
 
-    <button class="btn-green form-button" onclick="confirmDeposit()">
-      Confirmar depósito
-    </button>
+<div id="pixArea" class="hidden">
 
-    <div class="notice">
-      Esta versão é demonstrativa. Nenhum pagamento real é processado.
-    </div>
+  <img id="pixQr"
+       class="qr"
+       alt="QR Code PIX">
 
-  </div>
+  <input
+    id="pixCopyPaste"
+    readonly
+    placeholder="Código PIX">
+
+  <button
+    class="btn-dark form-button"
+    onclick="copyPix()">
+    Copiar código PIX
+  </button>
+
+  <p class="notice">
+    Após o pagamento, o servidor deverá confirmar
+    automaticamente a cobrança junto ao provedor PIX.
+  </p>
+
+</div>
+
+</div>
 </div>
 
 
 <!-- SAQUE -->
 
 <div class="modal" id="withdrawModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('withdrawModal')">×</button>
+<div class="modal-box">
 
-    <h2>Solicitar saque</h2>
+<button class="close"
+onclick="closeModal('withdrawModal')">×</button>
 
-    <input id="withdrawAmount" type="number" min="1" placeholder="Valor do saque">
-    <input id="withdrawPix" type="text" placeholder="Sua chave PIX">
+<h2>💸 Solicitar saque</h2>
 
-    <button class="btn-green form-button" onclick="requestWithdraw()">
-      Solicitar saque
-    </button>
+<input
+id="withdrawAmount"
+type="number"
+min="1"
+step="0.01"
+placeholder="Valor">
 
-    <div class="notice">
-      O saque é apenas demonstrativo nesta versão.
-    </div>
+<input
+id="withdrawPix"
+placeholder="Chave PIX">
 
-  </div>
+<button class="btn-green form-button"
+onclick="requestWithdraw()">
+Solicitar saque
+</button>
+
+<p class="notice">
+A solicitação deverá ser enviada ao backend,
+que fará as validações e o processamento PIX.
+</p>
+
+</div>
 </div>
 
 
 <!-- JOGO -->
 
 <div class="modal" id="gameModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('gameModal')">×</button>
+<div class="modal-box">
 
-    <h2 id="gameTitle">Jogo</h2>
+<button class="close"
+onclick="closeModal('gameModal')">×</button>
 
-    <p style="margin-top:15px;color:#bbb;">
-      Você selecionou este jogo.
-    </p>
+<h2 id="gameTitle"></h2>
 
-    <button class="btn-green form-button" onclick="closeModal('gameModal')">
-      Continuar
-    </button>
+<p style="margin-top:15px;color:#bbb;">
+Jogo selecionado.
+</p>
 
-  </div>
+<button class="btn-green form-button"
+onclick="closeModal('gameModal')">
+Continuar
+</button>
+
+</div>
 </div>
 
 
 <!-- SUPORTE -->
 
 <div class="modal" id="supportModal">
-  <div class="modal-box">
 
-    <button class="close" onclick="closeModal('supportModal')">×</button>
+<div class="modal-box">
 
-    <h2>🛟 Atendimento</h2>
+<button class="close"
+onclick="closeModal('supportModal')">×</button>
 
-    <p style="margin-top:15px;color:#bbb;">
-      Precisa de ajuda? Entre em contato com o suporte da plataforma.
-    </p>
+<h2>🛟 Atendimento</h2>
 
-    <button class="btn-green form-button" onclick="alert('Atendimento demonstrativo.')">
-      Falar com suporte
-    </button>
+<p style="margin-top:15px;color:#bbb;">
+Entre em contato com o suporte da plataforma.
+</p>
 
-  </div>
+</div>
 </div>
 
 
 <script>
 
 let currentUser =
-  JSON.parse(localStorage.getItem("aj18_currentUser")) || null;
+JSON.parse(localStorage.getItem("aj18_currentUser")) || null;
 
 let users =
-  JSON.parse(localStorage.getItem("aj18_users")) || [];
+JSON.parse(localStorage.getItem("aj18_users")) || [];
 
 let balance =
-  Number(localStorage.getItem("aj18_balance")) || 0;
+Number(localStorage.getItem("aj18_balance")) || 0;
 
 
 function money(value){
-  return Number(value).toLocaleString("pt-BR",{
-    style:"currency",
-    currency:"BRL"
-  });
+
+return Number(value).toLocaleString("pt-BR",{
+style:"currency",
+currency:"BRL"
+});
+
 }
 
 
 function updateBalance(){
 
-  document.getElementById("balance").textContent =
-    money(balance);
+document.getElementById("balance").textContent =
+money(balance);
 
-  localStorage.setItem(
-    "aj18_balance",
-    balance
-  );
+localStorage.setItem(
+"aj18_balance",
+balance
+);
+
 }
 
 
 function openModal(id){
-  document.getElementById(id).style.display="flex";
+
+document.getElementById(id).style.display="flex";
+
 }
 
 
 function closeModal(id){
-  document.getElementById(id).style.display="none";
+
+document.getElementById(id).style.display="none";
+
 }
 
+
+/* CADASTRO */
 
 function register(){
 
-  const name =
-    document.getElementById("registerName").value.trim();
+const name =
+document.getElementById("registerName").value.trim();
 
-  const email =
-    document.getElementById("registerEmail").value.trim();
+const email =
+document.getElementById("registerEmail").value.trim();
 
-  const password =
-    document.getElementById("registerPassword").value;
+const password =
+document.getElementById("registerPassword").value;
 
-  if(!name || !email || !password){
-    alert("Preencha todos os campos.");
-    return;
-  }
+if(!name || !email || !password){
 
-  if(users.some(u => u.email === email)){
-    alert("Este e-mail já está cadastrado.");
-    return;
-  }
+alert("Preencha todos os campos.");
 
-  const user = {
-    name,
-    email,
-    password
-  };
+return;
 
-  users.push(user);
-
-  localStorage.setItem(
-    "aj18_users",
-    JSON.stringify(users)
-  );
-
-  currentUser = user;
-
-  localStorage.setItem(
-    "aj18_currentUser",
-    JSON.stringify(currentUser)
-  );
-
-  alert("Conta criada com sucesso!");
-
-  closeModal("registerModal");
-
-  updateInterface();
 }
 
+if(users.some(u => u.email === email)){
+
+alert("Este e-mail já está cadastrado.");
+
+return;
+
+}
+
+const user = {
+name,
+email,
+password
+};
+
+users.push(user);
+
+localStorage.setItem(
+"aj18_users",
+JSON.stringify(users)
+);
+
+currentUser=user;
+
+localStorage.setItem(
+"aj18_currentUser",
+JSON.stringify(currentUser)
+);
+
+closeModal("registerModal");
+
+updateInterface();
+
+alert("Conta criada com sucesso!");
+
+}
+
+
+/* LOGIN */
 
 function login(){
 
-  const email =
-    document.getElementById("loginEmail").value.trim();
+const email =
+document.getElementById("loginEmail").value.trim();
 
-  const password =
-    document.getElementById("loginPassword").value;
+const password =
+document.getElementById("loginPassword").value;
 
-  const user =
-    users.find(
-      u => u.email === email &&
-           u.password === password
-    );
+const user =
+users.find(
+u =>
+u.email === email &&
+u.password === password
+);
 
-  if(!user){
-    alert("E-mail ou senha incorretos.");
-    return;
-  }
+if(!user){
 
-  currentUser = user;
+alert("E-mail ou senha incorretos.");
 
-  localStorage.setItem(
-    "aj18_currentUser",
-    JSON.stringify(currentUser)
-  );
+return;
 
-  alert("Login realizado!");
-
-  closeModal("loginModal");
-
-  updateInterface();
 }
 
+currentUser=user;
+
+localStorage.setItem(
+"aj18_currentUser",
+JSON.stringify(currentUser)
+);
+
+closeModal("loginModal");
+
+updateInterface();
+
+alert("Login realizado com sucesso!");
+
+}
+
+
+/* LOGOUT */
 
 function logout(){
 
-  currentUser = null;
+currentUser=null;
 
-  localStorage.removeItem(
-    "aj18_currentUser"
-  );
+localStorage.removeItem(
+"aj18_currentUser"
+);
 
-  updateInterface();
+updateInterface();
+
 }
 
+
+/* INTERFACE */
 
 function updateInterface(){
 
-  const loginBtn =
-    document.getElementById("loginBtn");
+const loginBtn =
+document.getElementById("loginBtn");
 
-  const registerBtn =
-    document.getElementById("registerBtn");
+const registerBtn =
+document.getElementById("registerBtn");
 
-  const logoutBtn =
-    document.getElementById("logoutBtn");
+const logoutBtn =
+document.getElementById("logoutBtn");
 
-  if(currentUser){
+if(currentUser){
 
-    loginBtn.classList.add("hidden");
-    registerBtn.classList.add("hidden");
-    logoutBtn.classList.remove("hidden");
+loginBtn.classList.add("hidden");
 
-  }else{
+registerBtn.classList.add("hidden");
 
-    loginBtn.classList.remove("hidden");
-    registerBtn.classList.remove("hidden");
-    logoutBtn.classList.add("hidden");
+logoutBtn.classList.remove("hidden");
 
-  }
+}else{
 
-  updateBalance();
+loginBtn.classList.remove("hidden");
+
+registerBtn.classList.remove("hidden");
+
+logoutBtn.classList.add("hidden");
+
 }
 
+updateBalance();
+
+}
+
+
+/* DEPÓSITO */
 
 function openDeposit(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert("Entre ou crie uma conta primeiro.");
+alert("Entre ou crie uma conta primeiro.");
 
-    openModal("loginModal");
+openModal("loginModal");
 
-    return;
-  }
+return;
 
-  openModal("depositModal");
+}
+
+document.getElementById("pixArea")
+.classList.add("hidden");
+
+openModal("depositModal");
+
 }
 
 
-function confirmDeposit(){
+/*
+  Esta função chama o backend.
+  O backend deverá conversar com o provedor PIX/Inter.
 
-  const amount =
-    Number(
-      document.getElementById("depositAmount").value
-    );
+  Exemplo de resposta esperada:
 
-  if(!amount || amount <= 0){
-
-    alert("Digite um valor válido.");
-
-    return;
+  {
+    "qrCode": "imagem-ou-data-url",
+    "pixCopiaCola": "000201..."
   }
+*/
 
-  /*
-    DEMONSTRAÇÃO:
-    o valor é acrescentado somente ao saldo local.
-    Nenhum PIX real é processado.
-  */
+async function createPixCharge(){
 
-  balance += amount;
+const amount =
+Number(
+document.getElementById("depositAmount").value
+);
 
-  updateBalance();
+if(!amount || amount <= 0){
 
-  document.getElementById(
-    "depositAmount"
-  ).value = "";
+alert("Digite um valor válido.");
 
-  closeModal("depositModal");
+return;
 
-  alert(
-    "Depósito demonstrativo de " +
-    money(amount) +
-    " registrado."
-  );
 }
 
+try{
+
+/*
+  SUBSTITUA pela URL do seu backend.
+
+  Não coloque certificado,
+  client secret ou senha do Inter aqui.
+*/
+
+const response = await fetch(
+"/api/pix/create-charge",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+amount:amount,
+userId:currentUser.email
+})
+
+}
+);
+
+if(!response.ok){
+
+throw new Error("Falha ao criar cobrança");
+
+}
+
+const data =
+await response.json();
+
+document.getElementById("pixQr").src =
+data.qrCode;
+
+document.getElementById("pixCopyPaste").value =
+data.pixCopiaCola;
+
+document.getElementById("pixArea")
+.classList.remove("hidden");
+
+}catch(error){
+
+alert(
+"Não foi possível gerar a cobrança PIX. Configure o backend do provedor."
+);
+
+}
+
+}
+
+
+/* COPIAR PIX */
+
+function copyPix(){
+
+const input =
+document.getElementById("pixCopyPaste");
+
+input.select();
+
+navigator.clipboard.writeText(
+input.value
+);
+
+alert("Código PIX copiado.");
+
+}
+
+
+/* SAQUE */
 
 function openWithdraw(){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert("Entre ou crie uma conta primeiro.");
+alert("Entre ou crie uma conta primeiro.");
 
-    openModal("loginModal");
+openModal("loginModal");
 
-    return;
-  }
+return;
 
-  openModal("withdrawModal");
+}
+
+openModal("withdrawModal");
+
 }
 
 
-function requestWithdraw(){
+async function requestWithdraw(){
 
-  const amount =
-    Number(
-      document.getElementById("withdrawAmount").value
-    );
+const amount =
+Number(
+document.getElementById("withdrawAmount").value
+);
 
-  const pix =
-    document.getElementById("withdrawPix").value.trim();
+const pix =
+document.getElementById("withdrawPix").value.trim();
 
-  if(!amount || amount <= 0){
+if(!amount || amount <= 0){
 
-    alert("Digite um valor válido.");
+alert("Digite um valor válido.");
 
-    return;
-  }
+return;
 
-  if(!pix){
-
-    alert("Digite sua chave PIX.");
-
-    return;
-  }
-
-  if(amount > balance){
-
-    alert("Saldo insuficiente.");
-
-    return;
-  }
-
-  balance -= amount;
-
-  updateBalance();
-
-  document.getElementById(
-    "withdrawAmount"
-  ).value = "";
-
-  document.getElementById(
-    "withdrawPix"
-  ).value = "";
-
-  closeModal("withdrawModal");
-
-  alert(
-    "Solicitação de saque demonstrativa criada."
-  );
 }
 
+if(!pix){
+
+alert("Informe a chave PIX.");
+
+return;
+
+}
+
+try{
+
+/*
+  O backend deve validar:
+
+  - usuário
+  - saldo
+  - limites
+  - regras de saque
+  - autenticação
+  - prevenção contra fraude
+
+  e então solicitar a transferência PIX.
+*/
+
+const response = await fetch(
+"/api/pix/withdraw",
+{
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+amount:amount,
+
+pixKey:pix,
+
+userId:currentUser.email
+
+})
+
+}
+);
+
+if(!response.ok){
+
+throw new Error("Falha no saque");
+
+}
+
+const data =
+await response.json();
+
+closeModal("withdrawModal");
+
+document.getElementById(
+"withdrawAmount"
+).value="";
+
+document.getElementById(
+"withdrawPix"
+).value="";
+
+alert(
+data.message ||
+"Solicitação de saque enviada."
+);
+
+}catch(error){
+
+alert(
+"Não foi possível enviar o saque. Configure o backend do provedor."
+);
+
+}
+
+}
+
+
+/* JOGOS */
 
 function openGame(name){
 
-  if(!currentUser){
+if(!currentUser){
 
-    alert("Entre ou crie uma conta para acessar os jogos.");
+alert(
+"Entre ou crie uma conta para acessar os jogos."
+);
 
-    openModal("loginModal");
+openModal("loginModal");
 
-    return;
-  }
+return;
 
-  document.getElementById(
-    "gameTitle"
-  ).textContent = name;
+}
 
-  openModal("gameModal");
+document.getElementById(
+"gameTitle"
+).textContent=name;
+
+openModal("gameModal");
+
 }
 
 
+/* FECHAR MODAIS */
+
 window.addEventListener(
-  "click",
-  function(event){
+"click",
+function(event){
 
-    document
-      .querySelectorAll(".modal")
-      .forEach(modal => {
+document
+.querySelectorAll(".modal")
+.forEach(modal => {
 
-        if(event.target === modal){
+if(event.target === modal){
 
-          modal.style.display="none";
+modal.style.display="none";
 
-        }
+}
 
-      });
+});
 
-  }
-);
+});
 
 
 updateInterface();
