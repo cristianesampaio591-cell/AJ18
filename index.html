@@ -2,107 +2,97 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>AJ18 • Plataforma</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ18 — Plataforma</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#111;color:#fff;font-family:Arial,Helvetica,sans-serif;padding-bottom:70px}
-:root{--orange:#ff8b32;--orange2:#ffb15a;--bg:#111;--card:#211d1c;--muted:#aaa}
-button,input{font:inherit}button{cursor:pointer}
-.top{height:60px;background:#171515;display:flex;align-items:center;justify-content:space-between;padding:0 12px;position:sticky;top:0;z-index:20;border-bottom:1px solid #302b29}
-.logo{font-size:28px;font-weight:1000;font-style:italic;color:#ff9b35}.money{font-size:12px;background:#292523;border-radius:16px;padding:8px 10px;color:#ffd39c}
-.wrap{max-width:760px;margin:auto;padding:8px}
-.categories{display:flex;gap:6px;overflow:auto;padding:2px 0 8px}.cat{min-width:58px;background:#211d1c;border:1px solid #3a302c;border-radius:10px;color:#ddd;padding:7px 5px;font-size:10px;text-align:center}.cat b{display:block;font-size:19px}.cat.active{background:linear-gradient(#4b2919,#241c18);border-color:#a85d2a;color:#ffb46c}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin:8px 2px;font-size:14px}.section-title span{color:#aaa;font-size:11px}
-.search{display:flex;background:#24201f;border-radius:18px;border:1px solid #332e2c;margin:8px 0;padding:2px}.search input{flex:1;background:none;border:0;outline:0;color:white;padding:9px 12px}.search button{border:0;background:none;color:white;font-size:20px}
-.tabs{display:flex;gap:5px;margin-bottom:8px}.tab{background:#24201f;color:#bbb;border:0;border-radius:7px;padding:7px 13px;font-size:11px}.tab.active{background:var(--orange);color:#17110d}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.game{min-width:0;aspect-ratio:.76;border-radius:8px;overflow:hidden;background:linear-gradient(145deg,var(--a),var(--b));position:relative;box-shadow:0 3px 8px #0009}.art{height:78%;display:flex;align-items:center;justify-content:center;font-size:42px;text-shadow:0 3px 5px #000}.name{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,#000d);padding:20px 3px 6px;text-align:center;font-size:9px;font-weight:bold}.badge{position:absolute;top:4px;left:4px;background:#ff9b38;color:#111;padding:3px 5px;border-radius:4px;font-size:7px;font-weight:bold}.heart{position:absolute;top:3px;right:3px;background:#0007;color:white;border:0;border-radius:50%;width:22px;height:22px}
-.partners{display:flex;gap:7px;overflow:auto;padding:5px 0 14px}.partner{min-width:74px;height:35px;background:#252120;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:10px;font-weight:bold}
-.banner{background:linear-gradient(100deg,#7b2f0b,#ff9c3a,#7e260a);border-radius:10px;padding:12px;margin:10px 0;color:#fff}.banner h2{margin:0 0 4px;font-size:18px}.banner p{margin:0;font-size:10px}
-.promo{display:block;width:100%;border-radius:10px;margin:9px 0;background:linear-gradient(100deg,#9a360c,#ffb24d,#8e2a0a);padding:16px 14px;font-weight:900;font-size:15px;text-shadow:0 2px 3px #74300d}.promo small{display:block;font-size:10px;margin-top:5px}
-.panel{background:#1b1817;border-radius:10px;padding:13px;margin-top:10px}.panel h3{font-size:14px;margin:0 0 10px}.field{width:100%;background:#282321;color:white;border:1px solid #453b37;border-radius:7px;padding:11px;margin:5px 0}.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:7px 0}.amount{background:#282321;color:#ddd;border:1px solid #4a3d37;border-radius:7px;padding:9px 3px;font-size:11px}.amount.selected{background:#ff8d35;color:#111;border-color:#ffb66d}.primary{width:100%;border:0;border-radius:8px;padding:12px;background:linear-gradient(90deg,#ff8630,#ffb05a);font-weight:900;color:#2b1609}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:67px;background:#171515;border-top:1px solid #322b29;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#999;font-size:10px;padding:5px 13px}.nav b{display:block;font-size:20px;margin-bottom:3px}.nav.active{color:#ff9c3c}.nav.deposit{color:#ffb05a}
-.page{display:none}.page.active{display:block}
-.modal{position:fixed;inset:0;background:#000b;display:none;align-items:flex-end;z-index:100}.modal.show{display:flex}.sheet{width:100%;max-width:760px;margin:auto auto 0;background:#1a1716;border-radius:18px 18px 0 0;padding:18px;max-height:85vh;overflow:auto}.close{float:right;background:#332d2a;color:#fff;border:0;border-radius:50%;width:30px;height:30px}.sheet h2{margin-top:0}.notice{color:#999;font-size:10px;line-height:1.5}
-@media(min-width:700px){.wrap{padding:14px}.grid{grid-template-columns:repeat(6,1fr)}}
+:root{--bg:#050607;--panel:#101214;--panel2:#171a1d;--line:#292d31;--text:#fff;--muted:#9da3aa;--accent:#e8e8e8;--green:#23c483;--red:#ef5350}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+button,input{font:inherit} button{cursor:pointer;border:0}
+.top{position:sticky;top:0;z-index:10;background:rgba(5,6,7,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav{max-width:1100px;margin:auto;height:64px;display:flex;align-items:center;gap:12px;padding:0 16px}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px}.logo span{color:#aaa}
+.spacer{flex:1}.balance{font-size:13px;color:var(--muted);margin-right:6px}.balance b{color:#fff}
+.btn{padding:11px 15px;border-radius:9px;font-weight:700}.login{background:transparent;color:#fff;border:1px solid #444}.register{background:#fff;color:#000}
+.container{max-width:1100px;margin:auto;padding:18px 16px 90px}
+.hero{min-height:220px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 80% 20%,#34383d 0,#111416 38%,#070809 75%);display:flex;align-items:center;padding:28px;margin-bottom:18px;overflow:hidden}
+.hero h1{font-size:38px;margin:0 0 8px}.hero p{color:#b9bec4;margin:0 0 18px}.hero .cta{background:#fff;color:#000;padding:13px 18px;border-radius:9px;font-weight:800}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}.section-title h2{font-size:20px;margin:0}.section-title small{color:var(--muted)}
+.categories{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.cat{white-space:nowrap;background:var(--panel);color:#ddd;border:1px solid var(--line);padding:9px 13px;border-radius:999px}.cat.active{background:#fff;color:#000}
+.games{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.game{background:var(--panel);border:1px solid var(--line);border-radius:13px;overflow:hidden}.thumb{height:125px;background:linear-gradient(135deg,#292d31,#0d0f10);display:grid;place-items:center;font-weight:900;font-size:24px;letter-spacing:1px}.game:nth-child(2) .thumb{background:linear-gradient(135deg,#333,#141414)}.game:nth-child(3) .thumb{background:linear-gradient(135deg,#222,#080808)}.game:nth-child(4) .thumb{background:linear-gradient(135deg,#3b3b3b,#101010)}
+.game-body{padding:11px}.game-body b{display:block;margin-bottom:5px}.game-body span{color:var(--muted);font-size:12px}.play{width:100%;margin-top:10px;background:#fff;color:#000;padding:9px;border-radius:8px;font-weight:800}
+.account{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px}.card h3{margin:0 0 8px}.big{font-size:25px;font-weight:900}.actions{display:flex;gap:8px;margin-top:13px}.deposit{background:var(--green);color:#03150e}.withdraw{background:#25282b;color:#fff}.support{position:fixed;right:16px;bottom:18px;background:#fff;color:#000;border-radius:999px;padding:13px 17px;font-weight:800;box-shadow:0 8px 30px #000}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:30;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.box{width:min(420px,100%);background:#111416;border:1px solid #333;border-radius:16px;padding:20px}.box h2{margin-top:0}.field{width:100%;padding:12px;margin:6px 0 10px;background:#080909;border:1px solid #333;border-radius:8px;color:#fff}.full{width:100%;background:#fff;color:#000;padding:12px;border-radius:8px;font-weight:800}.close{float:right;background:transparent;color:#aaa;font-size:22px}
+.notice{color:#8f969d;font-size:12px;line-height:1.5;margin-top:12px}
+@media(max-width:800px){.games{grid-template-columns:repeat(2,1fr)}.hero{min-height:190px}.hero h1{font-size:30px}.balance{display:none}}
+@media(max-width:480px){.nav{padding:0 10px}.logo{font-size:21px}.login,.register{padding:9px 10px}.games{gap:8px}.thumb{height:105px}.account{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header class="top"><div class="logo">AJ18</div><div class="money">🪙 R$ <span id="balance">0,03</span> ▾</div></header>
+<header class="top"><nav class="nav">
+  <div class="logo">AJ<span>18</span></div>
+  <div class="spacer"></div>
+  <div class="balance">Saldo: <b id="saldo">R$ 0,00</b></div>
+  <button class="btn login" onclick="openModal('login')">Entrar</button>
+  <button class="btn register" onclick="openModal('register')">Criar conta</button>
+</nav></header>
 
-<main class="wrap">
-<section id="home" class="page active">
+<main class="container">
+<section class="hero">
+  <div>
+    <h1>AJ18</h1>
+    <p>Uma interface moderna para sua plataforma.</p>
+    <button class="cta" onclick="openModal('register')">Começar agora</button>
+  </div>
+</section>
+
+<div class="section-title"><h2>Jogos populares</h2><small>Explore a plataforma</small></div>
 <div class="categories">
-<button class="cat active" onclick="setCat('all',this)"><b>🔥</b>HOT</button>
-<button class="cat" onclick="setCat('slots',this)"><b>🎰</b>Slots</button>
-<button class="cat" onclick="setCat('live',this)"><b>🟠</b>Ao Vivo</button>
-<button class="cat" onclick="setCat('bingo',this)"><b>🎯</b>Bingo</button>
-<button class="cat" onclick="setCat('new',this)"><b>🆕</b>Novos</button>
+  <button class="cat active">Todos</button><button class="cat">Slots</button><button class="cat">Cassino</button><button class="cat">Esportes</button>
 </div>
-<div class="banner"><h2>🎁 Bem-vindo à AJ18</h2><p>Área promocional da plataforma. Use este espaço para campanhas e avisos.</p></div>
-<div class="section-title"><b>🎮 Jogos</b><span id="count"></span></div>
-<div class="search"><input id="search" placeholder="Pesquisar jogo..." oninput="render()"><button>⌕</button></div>
-<div class="tabs"><button class="tab active">Todos</button><button class="tab">Recente</button><button class="tab">Favoritos</button></div>
-<div id="games" class="grid"></div>
-<div class="section-title"><b>🤝 Parceiros</b></div>
-<div class="partners"><div class="partner">AJ GAMES</div><div class="partner">PLAY</div><div class="partner">SPIN</div><div class="partner">LIVE</div><div class="partner">SPORT</div></div>
-<div class="section-title"><b>📢 Canal Oficial</b></div>
-<div class="panel"><p style="font-size:11px;color:#bbb">Acompanhe novidades e suporte pelos canais oficiais.</p><button class="primary" onclick="openModal('support')">Abrir suporte</button></div>
+
+<div class="games">
+  <article class="game"><div class="thumb">SLOT 01</div><div class="game-body"><b>Lucky Spin</b><span>Slot demonstrativo</span><button class="play" onclick="demo('Lucky Spin')">Jogar</button></div></article>
+  <article class="game"><div class="thumb">SLOT 02</div><div class="game-body"><b>Golden Tiger</b><span>Slot demonstrativo</span><button class="play" onclick="demo('Golden Tiger')">Jogar</button></div></article>
+  <article class="game"><div class="thumb">SLOT 03</div><div class="game-body"><b>Fortune Bull</b><span>Slot demonstrativo</span><button class="play" onclick="demo('Fortune Bull')">Jogar</button></div></article>
+  <article class="game"><div class="thumb">LIVE</div><div class="game-body"><b>Live Casino</b><span>Área demonstrativa</span><button class="play" onclick="demo('Live Casino')">Entrar</button></div></article>
+</div>
+
+<div class="section-title"><h2>Carteira</h2><small>Área da conta</small></div>
+<section class="account">
+  <div class="card"><h3>Saldo disponível</h3><div class="big" id="saldo2">R$ 0,00</div><div class="actions"><button class="btn deposit" onclick="openModal('deposit')">Depositar</button><button class="btn withdraw" onclick="openModal('withdraw')">Sacar</button></div></div>
+  <div class="card"><h3>Conta</h3><div style="color:#aaa">Faça login para acessar seu perfil.</div><div class="actions"><button class="btn login" onclick="openModal('login')">Entrar</button><button class="btn register" onclick="openModal('register')">Cadastrar</button></div></div>
 </section>
 
-<section id="promoPage" class="page">
-<div class="section-title"><b>Promoções</b><span>VIP • Comissão • Código</span></div>
-<div class="promo">🎁 CONVIDE 1 PESSOA E GANHE BÔNUS<small>Campanhas e regras devem ser configuradas pelo administrador.</small></div>
-<div class="promo">🔥 PROMOÇÃO DIÁRIA<small>Área para divulgar ofertas e condições.</small></div>
-<div class="promo">💎 PROGRAMA VIP<small>Benefícios, níveis e condições do programa.</small></div>
-<div class="promo">💰 COMISSÃO<small>Área informativa para campanhas de comissão.</small></div>
-</section>
-
-<section id="depositPage" class="page">
-<div class="section-title"><b>← Depósito</b><span>PIX</span></div>
-<div class="panel"><h3>Canal de pagamento:</h3><button class="tab active">PIX</button><input class="field" id="depValue" value="R$ 10,00"><div class="amounts">
-<button class="amount selected" onclick="amount('R$ 10,00',this)">R$ 10,00</button><button class="amount" onclick="amount('R$ 30,00',this)">R$ 30,00</button><button class="amount" onclick="amount('R$ 50,00',this)">R$ 50,00</button><button class="amount" onclick="amount('R$ 100,00',this)">R$ 100,00</button><button class="amount" onclick="amount('R$ 500,00',this)">R$ 500,00</button><button class="amount" onclick="amount('R$ 1.000,00',this)">R$ 1.000,00</button></div><button class="primary" onclick="demoDeposit()">Depósito</button><p class="notice">Esta tela é uma demonstração. Um depósito real exige backend, provedor de pagamentos e cumprimento dos requisitos legais e de segurança aplicáveis.</p></div>
-</section>
-
-<section id="withdrawPage" class="page">
-<div class="section-title"><b>← Saque</b></div>
-<div class="panel"><h3>Solicitar saque</h3><input class="field" placeholder="Valor (R$)"><input class="field" placeholder="Chave PIX"><button class="primary" onclick="openModal('notice')">Solicitar saque</button><p class="notice">Demonstração visual. Processamento real precisa de backend, autenticação e controles antifraude.</p></div>
-</section>
-
-<section id="accountPage" class="page">
-<div class="section-title"><b>👤 Meu</b></div>
-<div class="panel"><h3>Minha conta</h3><button class="primary" onclick="openModal('login')">Entrar</button><br><br><button class="primary" onclick="openModal('signup')">Criar conta</button></div>
-</section>
+<p class="notice">Esta versão é uma interface/demo front-end. Depósitos, saques, jogos com dinheiro real, KYC, antifraude e processamento de pagamentos exigem backend, integrações autorizadas e conformidade com as regras aplicáveis.</p>
 </main>
 
-<nav class="bottom">
-<button class="nav active" onclick="page('home',this)"><b>🎮</b>Início</button>
-<button class="nav" onclick="page('promoPage',this)"><b>🎁</b>Promoção</button>
-<button class="nav deposit" onclick="page('depositPage',this)"><b>💳</b>Depósito</button>
-<button class="nav" onclick="page('withdrawPage',this)"><b>🏦</b>Saque</button>
-<button class="nav" onclick="page('accountPage',this)"><b>👤</b>Meu</button>
-</nav>
+<button class="support" onclick="alert('Atendimento: conecte aqui seu sistema de suporte.')">💬 Suporte</button>
 
-<div id="modal" class="modal"><div class="sheet"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<div class="modal" id="modal"><div class="box">
+  <button class="close" onclick="closeModal()">×</button>
+  <div id="modalContent"></div>
+</div></div>
 
 <script>
-const games=[
-["FORTUNE GODDESS","👑","#ed9a27","#6a1a0b","all"],["FORTUNE TIGER","🐯","#ef7222","#701209","all"],["FORTUNE SHEEP","🐑","#7d48db","#182f72","slots"],["ZEUS","⚡","#2689db","#35125f","all"],
-["EGYPT BONANZA","🏺","#d88b23","#5a1708","all"],["LEGEND OF INCA","🗿","#d44c35","#3b0f13","new"],["SUPER ELEMENTS","🔥","#f06c23","#7a1b0a","new"],["WIN WIN NEKO","🐱","#f5c52d","#3b196d","all"],
-["FORTUNE MOUSE","🐭","#ef8baf","#6d273e","slots"],["CASHING","💰","#d3a82b","#3a1909","slots"],["GOLDEN PANTHER","🐆","#e3b22d","#3b1705","jackpot"],["FRUIT SUPER","🍉","#35a954","#104d2e","slots"],
-["DIAMOND RUSH","💎","#1ca8df","#252269","jackpot"],["WILD OVERLORDS","🐉","#2d9ac4","#132d53","new"],["MAYAN EMPIRE","👸","#d58c3c","#51201b","all"],["BUBBLE BEAUTY","🫧","#ef6289","#3d1745","all"],
-["LUCKY 7","7️⃣","#21a963","#092c4c","new"],["GOLD RUSH","🪙","#f2b72d","#5b2707","jackpot"],["CHARON BUFFALO","🐃","#b46c29","#30150b","all"],["XIYANGYANG","🐑","#f4a62b","#6c2108","slots"],
-["SUPER ACE","🃏","#b83ce5","#241054","all"],["FISHING","🎣","#2d98c4","#173a58","live"],["BINGO","🎯","#e34d57","#3e1234","bingo"],["JOKER","🤡","#cc35b8","#3a1768","all"]
-];
-let cat='all';
-function setCat(c,b){cat=c;document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}
-function render(){let q=document.getElementById('search').value.toLowerCase();let list=games.filter(g=>(cat==='all'||g[4]===cat)&&g[0].toLowerCase().includes(q));document.getElementById('count').textContent=list.length+' jogos';document.getElementById('games').innerHTML=list.map(g=>`<div class="game" style="--a:${g[2]};--b:${g[3]}" onclick="openModal('game','${g[0]}','${g[1]}')"><span class="badge">AJ18</span><button class="heart" onclick="event.stopPropagation()">♡</button><div class="art">${g[1]}</div><div class="name">${g[0]}</div></div>`).join('')}
-function page(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active');scrollTo(0,0)}
-function amount(v,b){document.getElementById('depValue').value=v;document.querySelectorAll('.amount').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}
-function demoDeposit(){openModal('notice')}
-function openModal(type,name='',icon='🎰'){let v={login:`<h2>Entrar</h2><input class="field" placeholder="E-mail ou telefone"><input class="field" type="password" placeholder="Senha"><button class="primary">Entrar</button><p class="notice">A autenticação real precisa de backend seguro.</p>`,signup:`<h2>Criar conta</h2><input class="field" placeholder="Nome completo"><input class="field" placeholder="CPF"><input class="field" placeholder="E-mail"><input class="field" placeholder="Telefone"><input class="field" type="password" placeholder="Senha"><button class="primary">Criar conta</button>`,game:`<h2>${icon} ${name}</h2><div style="font-size:75px;text-align:center">${icon}</div><button class="primary" onclick="closeModal()">ENTRAR NO JOGO</button><p class="notice">Este botão é uma área de demonstração. Para jogos reais, é necessária integração com provedor autorizado.</p>`,support:`<h2>🎧 Suporte</h2><input class="field" placeholder="Assunto"><textarea class="field" rows="5" placeholder="Mensagem"></textarea><button class="primary">Enviar</button>`,notice:`<h2>ℹ️ Plataforma</h2><p class="notice">Esta versão é uma interface funcional de demonstração. Não processa dinheiro real nem apostas reais.</p>`};document.getElementById('modalBody').innerHTML=v[type]||v.notice;document.getElementById('modal').classList.add('show')}
+let saldo=0;
+function money(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+function update(){document.getElementById('saldo').textContent=money(saldo);document.getElementById('saldo2').textContent=money(saldo);}
+function openModal(type){
+ const m=document.getElementById('modal'), c=document.getElementById('modalContent');
+ if(type==='login') c.innerHTML='<h2>Entrar</h2><input class="field" placeholder="E-mail"><input class="field" type="password" placeholder="Senha"><button class="full" onclick="fakeLogin()">Entrar</button><p class="notice">Demonstração local: nenhum dado é enviado para um servidor.</p>';
+ if(type==='register') c.innerHTML='<h2>Criar conta</h2><input class="field" placeholder="Nome completo"><input class="field" placeholder="E-mail"><input class="field" type="password" placeholder="Senha"><button class="full" onclick="fakeRegister()">Criar conta</button><p class="notice">Para produção, implemente cadastro seguro, verificação de identidade e proteção de dados no backend.</p>';
+ if(type==='deposit') c.innerHTML='<h2>Depósito</h2><input id="dep" class="field" type="number" min="1" step=".01" placeholder="Valor em R$"><button class="full" onclick="demoDeposit()">Continuar</button><p class="notice">Modo demonstração: não movimenta dinheiro real.</p>';
+ if(type==='withdraw') c.innerHTML='<h2>Saque</h2><input id="wd" class="field" type="number" min="1" step=".01" placeholder="Valor em R$"><button class="full" onclick="demoWithdraw()">Solicitar</button><p class="notice">Modo demonstração: nenhum pagamento é processado.</p>';
+ m.classList.add('show');
+}
 function closeModal(){document.getElementById('modal').classList.remove('show')}
-document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeModal()}
-render();
+function fakeLogin(){alert('Login demonstrativo realizado.');closeModal()}
+function fakeRegister(){alert('Cadastro demonstrativo realizado.');closeModal()}
+function demoDeposit(){let v=Number(document.getElementById('dep').value);if(v>0){saldo+=v;update();alert('Saldo DEMO atualizado.');closeModal()}else alert('Informe um valor.')}
+function demoWithdraw(){let v=Number(document.getElementById('wd').value);if(v>0&&v<=saldo){saldo-=v;update();alert('Saque DEMO registrado.');closeModal()}else alert('Valor inválido para o saldo DEMO.')}
+function demo(name){alert(name+' — área demonstrativa. Conecte aqui o provedor/licença de jogos autorizado.')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+update();
 </script>
 </body>
 </html>
