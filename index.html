@@ -1,160 +1,702 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Jogos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-        header {
-            background-color: #1e293b;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #334155;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #38bdf8;
-        }
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: #38bdf8;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .hero {
-            background: linear-gradient(to right, #1e293b, #0f172a);
-            padding: 3rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            border: 1px solid #334155;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #f8fafc;
-        }
-        .hero p {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-        }
-        .btn {
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-            transition: background-color 0.2s;
-        }
-        .btn:hover {
-            background-color: #0ea5e9;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .card {
-            background-color: #1e293b;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            border: 1px solid #334155;
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card-img {
-            height: 160px;
-            background-color: #475569;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            font-size: 1.2rem;
-        }
-        .card-body {
-            padding: 1.25rem;
-        }
-        .card-body h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-        }
-        .card-body p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penalty Challenge</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#020b18;
+    color:white;
+}
+
+header{
+    height:75px;
+    background:#031222;
+    border-bottom:2px solid #0d314d;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    color:#18e88d;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu button{
+    background:none;
+    border:0;
+    color:#c7d5e5;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.menu button:hover{
+    color:#19e990;
+}
+
+.saldo{
+    background:#071b2d;
+    border:1px solid #1684a8;
+    padding:12px 20px;
+    border-radius:12px;
+}
+
+.saldo strong{
+    color:#19ed91;
+    font-size:20px;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:18px;
+}
+
+/* VALOR */
+
+.valor-box{
+    background:#071a2b;
+    border:1px solid #123d5c;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.valor-box h3{
+    margin-bottom:13px;
+}
+
+.valores{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.valores button{
+    background:#102943;
+    color:white;
+    border:0;
+    padding:14px 5px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.valores button.selecionado{
+    background:#10dc83;
+    color:#03140d;
+    box-shadow:0 0 18px #10dc83;
+}
+
+/* CAMPO */
+
+.campo{
+    position:relative;
+    height:510px;
+    overflow:hidden;
+    border-radius:20px;
+    border:3px solid #315d45;
+    background:
+        linear-gradient(
+            rgba(0,40,20,.15),
+            rgba(0,20,10,.2)
+        ),
+        repeating-linear-gradient(
+            90deg,
+            #16743c 0px,
+            #16743c 90px,
+            #1a8144 90px,
+            #1a8144 180px
+        );
+}
+
+/* estádio */
+
+.campo:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:180px;
+    background:
+        radial-gradient(circle,#ffffff44 1px,transparent 2px);
+    background-size:20px 20px;
+    opacity:.5;
+}
+
+/* TRAVE */
+
+.trave{
+    position:absolute;
+    top:70px;
+    left:16%;
+    width:68%;
+    height:250px;
+    border:9px solid white;
+    border-bottom:0;
+    box-shadow:0 0 10px #000;
+}
+
+.rede{
+    position:absolute;
+    top:80px;
+    left:17%;
+    width:66%;
+    height:240px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 19px,
+            #ffffff55 20px 21px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 19px,
+            #ffffff55 20px 21px
+        );
+}
+
+/* JOGADOR */
+
+.jogador{
+    position:absolute;
+    left:17%;
+    bottom:35px;
+    font-size:115px;
+    z-index:4;
+    filter:drop-shadow(0 8px 5px #000);
+}
+
+.nome-jogador{
+    position:absolute;
+    left:17%;
+    bottom:5px;
+    z-index:5;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* GOLEIRO */
+
+.goleiro{
+    position:absolute;
+    left:45%;
+    top:125px;
+    font-size:90px;
+    z-index:5;
+    transition:.45s;
+    filter:drop-shadow(0 8px 5px #000);
+}
+
+/* BOLA */
+
+.bola{
+    position:absolute;
+    left:38%;
+    bottom:45px;
+    font-size:43px;
+    z-index:7;
+    transition:.5s;
+}
+
+/* CONTROLES */
+
+.controles{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    width:330px;
+    background:#031528ee;
+    border:1px solid #245071;
+    border-radius:18px;
+    padding:18px;
+    z-index:10;
+}
+
+.controles h3{
+    margin-bottom:12px;
+}
+
+.direcoes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.direcoes button{
+    padding:18px 5px;
+    border:0;
+    border-radius:10px;
+    background:#152e49;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.direcoes button.active{
+    background:#16df86;
+    color:#03140c;
+}
+
+.chutar{
+    width:100%;
+    margin-top:12px;
+    padding:17px;
+    border:0;
+    border-radius:12px;
+    background:#12df82;
+    color:#03140d;
+    font-size:18px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* PAINÉIS */
+
+.paineis{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:15px;
+    margin-top:18px;
+}
+
+.painel{
+    background:#061727;
+    border:1px solid #173c56;
+    border-radius:16px;
+    padding:20px;
+}
+
+.painel h2{
+    color:#19e890;
+    margin-bottom:15px;
+}
+
+.resultado{
+    min-height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    border:1px solid #1b634a;
+    border-radius:12px;
+    background:#071d17;
+    font-size:18px;
+}
+
+.historico{
+    max-height:160px;
+    overflow:auto;
+}
+
+.item{
+    padding:9px;
+    border-bottom:1px solid #173344;
+    font-size:14px;
+}
+
+footer{
+    margin-top:20px;
+    padding:25px;
+    text-align:center;
+    background:#03101e;
+    color:#71869a;
+    font-size:13px;
+}
+
+@media(max-width:800px){
+
+    header{
+        padding:0 12px;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .valores{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .campo{
+        height:520px;
+    }
+
+    .controles{
+        left:10px;
+        right:10px;
+        bottom:10px;
+        width:auto;
+    }
+
+    .jogador{
+        left:5%;
+        font-size:80px;
+    }
+
+    .goleiro{
+        font-size:65px;
+    }
+
+    .paineis{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <div class="logo">GameHub</div>
-        <nav>
-            <a href="#">Início</a>
-            <a href="#">Jogos</a>
-            <a href="#">Categorias</a>
-            <a href="#">Contato</a>
-        </nav>
-    </header>
 
-    <div class="container">
-        <section class="hero">
-            <h1>Bem-vindo à sua nova Plataforma de Jogos</h1>
-            <p>Explore os melhores títulos, jogue direto no navegador e divirta-se com nossa seleção exclusiva.</p>
-            <a href="#" class="btn">Explorar Jogos</a>
-        </section>
+<header>
 
-        <h2>Destaques</h2>
-        <br>
-        <div class="grid">
-            <div class="card">
-                <div class="card-img">Imagem do Jogo 1</div>
-                <div class="card-body">
-                    <h3>Cyber Quest</h3>
-                    <p>Uma aventura futurista cheia de ação em mundo aberto.</p>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img">Imagem do Jogo 2</div>
-                <div class="card-body">
-                    <h3>Pixel Dungeon</h3>
-                    <p>Explore masmorras clássicas no estilo retrô com muita dificuldade.</p>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img">Imagem do Jogo 3</div>
-                <div class="card-body">
-                    <h3>Speed Racer X</h3>
-                    <p>Corridas eletrizantes em pistas insanas contra o tempo.</p>
-                    <a href="#" class="btn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Jogar Agora</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="logo">
+⚽ PENALTY CHALLENGE
+</div>
+
+<div class="menu">
+<button>🏠 Início</button>
+<button>🎮 Jogos</button>
+<button>🎁 Promoções</button>
+<button>💳 Depósito</button>
+<button>💰 Saque</button>
+<button>👤 Perfil</button>
+</div>
+
+<div class="saldo">
+Saldo virtual<br>
+<strong>R$ <span id="saldo">1.000,00</span></strong>
+</div>
+
+</header>
+
+<div class="container">
+
+<!-- VALORES -->
+
+<div class="valor-box">
+
+<h3>ESCOLHA O VALOR DA SUA COBRANÇA</h3>
+
+<div class="valores">
+
+<button onclick="selecionarValor(1)">R$ 1</button>
+<button onclick="selecionarValor(5)">R$ 5</button>
+<button onclick="selecionarValor(10)" class="selecionado">R$ 10</button>
+<button onclick="selecionarValor(25)">R$ 25</button>
+<button onclick="selecionarValor(50)">R$ 50</button>
+<button onclick="selecionarValor(100)">R$ 100</button>
+
+</div>
+
+</div>
+
+<!-- CAMPO -->
+
+<div class="campo">
+
+<div class="rede"></div>
+
+<div class="trave"></div>
+
+<!-- jogador inspirado em futebol brasileiro -->
+<div class="jogador">⚽</div>
+<div class="nome-jogador">JOGADOR Nº 10</div>
+
+<!-- goleiro -->
+<div id="goleiro" class="goleiro">🧤</div>
+
+<div id="bola" class="bola">⚽</div>
+
+<!-- CONTROLES -->
+
+<div class="controles">
+
+<h3>DIREÇÃO DO CHUTE</h3>
+
+<div class="direcoes">
+
+<button onclick="direcao('esquerda')">
+⬅️<br>ESQUERDA
+</button>
+
+<button onclick="direcao('meio')">
+⬆️<br>MEIO
+</button>
+
+<button onclick="direcao('direita')">
+➡️<br>DIREITA
+</button>
+
+</div>
+
+<button class="chutar" onclick="chutar()">
+⚽ BATER PÊNALTI
+</button>
+
+</div>
+
+</div>
+
+<!-- PAINÉIS -->
+
+<div class="paineis">
+
+<div class="painel">
+
+<h2>🎯 COMO FUNCIONA?</h2>
+
+<p>1. Escolha o valor da cobrança.</p>
+<br>
+<p>2. Escolha a direção do chute.</p>
+<br>
+<p>3. Clique em Bater Pênalti.</p>
+<br>
+<p>4. O resultado será gerado no modo demonstração.</p>
+
+</div>
+
+<div class="painel">
+
+<h2>⚽ RESULTADO</h2>
+
+<div id="resultado" class="resultado">
+Aguardando sua cobrança...
+</div>
+
+</div>
+
+<div class="painel">
+
+<h2>📋 HISTÓRICO</h2>
+
+<div id="historico" class="historico">
+Nenhuma cobrança realizada.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+🛡️ JOGO DEMONSTRATIVO —
+Resultados virtuais —
+18+ Jogue com responsabilidade
+
+</footer>
+
+<script>
+
+let saldo = 1000;
+let valor = 10;
+let direcaoEscolhida = null;
+
+let historico = [];
+
+function atualizarSaldo(){
+
+    document.getElementById("saldo").innerText =
+        saldo.toLocaleString("pt-BR",{
+            minimumFractionDigits:2
+        });
+
+}
+
+function selecionarValor(v){
+
+    valor = v;
+
+    document
+        .querySelectorAll(".valores button")
+        .forEach(btn =>
+            btn.classList.remove("selecionado")
+        );
+
+    event.target.classList.add("selecionado");
+
+}
+
+function direcao(d){
+
+    direcaoEscolhida = d;
+
+    document
+        .querySelectorAll(".direcoes button")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+    if(d === "esquerda")
+        document.querySelectorAll(".direcoes button")[0]
+        .classList.add("active");
+
+    if(d === "meio")
+        document.querySelectorAll(".direcoes button")[1]
+        .classList.add("active");
+
+    if(d === "direita")
+        document.querySelectorAll(".direcoes button")[2]
+        .classList.add("active");
+
+    document.getElementById("resultado").innerText =
+        "Direção selecionada: " + d.toUpperCase();
+
+}
+
+function chutar(){
+
+    if(!direcaoEscolhida){
+
+        alert("Escolha a direção do chute.");
+
+        return;
+    }
+
+    if(valor > saldo){
+
+        alert("Saldo virtual insuficiente.");
+
+        return;
+    }
+
+    saldo -= valor;
+
+    const direcoes = [
+        "esquerda",
+        "meio",
+        "direita"
+    ];
+
+    const defesa =
+        direcoes[
+            Math.floor(
+                Math.random()*direcoes.length
+            )
+        ];
+
+    const goleiro =
+        document.getElementById("goleiro");
+
+    const bola =
+        document.getElementById("bola");
+
+    if(defesa === "esquerda")
+        goleiro.style.left = "20%";
+
+    if(defesa === "meio")
+        goleiro.style.left = "45%";
+
+    if(defesa === "direita")
+        goleiro.style.left = "70%";
+
+    if(direcaoEscolhida === "esquerda"){
+
+        bola.style.left = "25%";
+        bola.style.bottom = "250px";
+
+    }
+
+    if(direcaoEscolhida === "meio"){
+
+        bola.style.left = "48%";
+        bola.style.bottom = "270px";
+
+    }
+
+    if(direcaoEscolhida === "direita"){
+
+        bola.style.left = "70%";
+        bola.style.bottom = "250px";
+
+    }
+
+    setTimeout(function(){
+
+        const gol =
+            direcaoEscolhida !== defesa;
+
+        let mensagem;
+
+        if(gol){
+
+            const premio =
+                valor * 1.8;
+
+            saldo += premio;
+
+            mensagem =
+                "⚽ GOOOOOL!<br>" +
+                "Prêmio virtual: + R$ " +
+                premio.toFixed(2);
+
+        }else{
+
+            mensagem =
+                "🧤 DEFESA DO GOLEIRO!<br>" +
+                "Rodada virtual perdida.";
+
+        }
+
+        document.getElementById("resultado")
+            .innerHTML = mensagem;
+
+        historico.unshift(
+            "R$ " +
+            valor.toFixed(2) +
+            " — " +
+            (gol ? "⚽ GOL" : "🧤 DEFESA")
+        );
+
+        document.getElementById("historico")
+            .innerHTML =
+            historico.map(
+                item =>
+                '<div class="item">' +
+                item +
+                '</div>'
+            ).join("");
+
+        atualizarSaldo();
+
+        setTimeout(function(){
+
+            bola.style.left = "38%";
+            bola.style.bottom = "45px";
+
+            goleiro.style.left = "45%";
+
+        },700);
+
+        direcaoEscolhida = null;
+
+    },600);
+
+}
+
+atualizarSaldo();
+
+</script>
+
 </body>
 </html>
