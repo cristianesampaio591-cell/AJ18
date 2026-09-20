@@ -1,42 +1,1356 @@
-from pathlib import Path import base64
-img_path = Path("/mnt/data/1000001931.jpg") b64 = base64.b64encode(img_path.read_bytes()).decode("ascii")
-html = f"""
-�
-Plataforma * {{ box-sizing: border-box; }} body {{ margin: 0; font-family: Arial, sans-serif; background: #0b0f14; color: #fff; }} header {{ background: #151b23; padding: 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #29313c; }} .logo {{ font-size: 22px; font-weight: 800; }} .saldo {{ color: #65e572; font-weight: bold; }} main {{ padding: 24px 16px 100px; max-width: 700px; margin: auto; }} .card {{ background: #151b23; border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: 0 8px 30px rgba(0,0,0,.25); }} button {{ border: 0; border-radius: 12px; padding: 15px 20px; font-size: 16px; font-weight: bold; cursor: pointer; }} .depositar {{ background: #19c85b; color: #06100a; }} .sacar {{ background: #303945; color: white; margin-left: 8px; }} .jogar {{ background: #f0b90b; color: #111; width: 100%; margin-top: 12px; }} .overlay {{ display: none; position: fixed; inset: 0; background: rgba(0,0,0,.78); z-index: 1000; align-items: center; justify-content: center; padding: 18px; }} .modal {{ width: 100%; max-width: 430px; background: white; color: #151515; border-radius: 20px; padding: 22px; text-align: center; position: relative; }} .close {{ position: absolute; right: 12px; top: 10px; background: #eee; color: #222; padding: 7px 11px; border-radius: 50%; font-size: 18px; }} .qr {{ width: min(100%, 330px); height: auto; display: block; margin: 16px auto; border-radius: 8px; }} .pix {{ background: #f1f3f5; padding: 12px; border-radius: 10px; word-break: break-all; font-weight: bold; margin: 10px 0; }} .copy {{ background: #111827; color: #fff; width: 100%; }} .small {{ color: #666; font-size: 13px; line-height: 1.4; }} 
-�
-MINHA PLATAFORMA
-Saldo: R$ 0,00
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-�
-Carteira
-Faça um depósito para adicionar saldo.
-Depositar Sacar 
+<title>Penalty Challenge</title>
 
-�
-Jogos
-Escolha um jogo para continuar.
-Jogar 
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-�
+body{
+    background:#06111f;
+    color:white;
+    min-height:100vh;
+}
 
-�
-× 
-Depositar via Pix
-Escaneie o QR Code abaixo no aplicativo do seu banco.
+header{
+    background:#071a2d;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+    border-bottom:2px solid #10dc83;
+}
 
-<img class="qr" src="data:image/jpeg;base64,{b64}" alt="QR Code Pix">
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#10dc83;
+}
 
-<p><strong>Chave Pix</strong></p>
-<div class="pix" id="pixKey">jonatalourenco591@gmail.com</div>
-<button class="copy" onclick="copiarPix()">Copiar chave Pix</button>
+.menu{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
 
-<p class="small">
-  Confira o destinatário e o valor no aplicativo do seu banco antes de confirmar a transferência.
+.menu button{
+    border:0;
+    border-radius:8px;
+    padding:10px 13px;
+    background:#102b43;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-depositar{
+    background:#10dc83 !important;
+    color:#03140d !important;
+}
+
+.btn-sacar{
+    background:#1684a8 !important;
+}
+
+.saldo{
+    background:#102b43;
+    border:1px solid #1684a8;
+    border-radius:10px;
+    padding:8px 15px;
+    text-align:center;
+}
+
+.saldo strong{
+    color:#10dc83;
+    font-size:18px;
+}
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:20px auto;
+}
+
+.carteira{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.carteira button{
+    padding:18px;
+    border:0;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.depositar{
+    background:#10dc83;
+    color:#03140d;
+}
+
+.sacar{
+    background:#1684a8;
+    color:white;
+}
+
+.jogo{
+    background:#092033;
+    border-radius:15px;
+    padding:20px;
+    border:1px solid #123c58;
+}
+
+.jogo h1{
+    text-align:center;
+    margin-bottom:10px;
+    color:#10dc83;
+}
+
+.info{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.valores{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin:15px 0;
+}
+
+.valores button{
+    padding:10px 15px;
+    border:1px solid #1684a8;
+    background:#102b43;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.valores button:hover{
+    background:#10dc83;
+    color:#03140d;
+}
+
+.campo{
+    height:350px;
+    max-width:700px;
+    margin:20px auto;
+    border-radius:15px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 0,
+            rgba(255,255,255,.025) 45px,
+            transparent 45px,
+            transparent 90px
+        ),
+        linear-gradient(
+            to bottom,
+            #168746 0%,
+            #08733f 100%
+        );
+    border:3px solid white;
+    position:relative;
+    overflow:hidden;
+}
+
+.campo::before{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border:2px solid rgba(255,255,255,.55);
+    border-radius:50%;
+    left:50%;
+    top:55%;
+    transform:translate(-50%,-50%);
+}
+
+.campo::after{
+    content:"";
+    position:absolute;
+    width:70%;
+    height:105px;
+    left:15%;
+    bottom:-50px;
+    border:2px solid rgba(255,255,255,.5);
+    border-radius:50%;
+}
+
+.trave{
+    position:absolute;
+    top:25px;
+    left:12%;
+    width:76%;
+    height:125px;
+    border:5px solid white;
+    border-bottom:0;
+    z-index:2;
+}
+
+.trave::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 12px,
+            rgba(255,255,255,.16) 13px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 15px,
+            rgba(255,255,255,.16) 16px
+        );
+}
+
+.goleiro-exemplo{
+    position:absolute;
+    top:50px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100px;
+    height:135px;
+    z-index:8;
+}
+
+.g-cabeca{
+    width:34px;
+    height:38px;
+    background:#b9784d;
+    border:2px solid #222;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+    z-index:3;
+}
+
+.g-cabeca::before{
+    content:"";
+    position:absolute;
+    width:32px;
+    height:14px;
+    top:-5px;
+    left:0;
+    background:#252525;
+    border-radius:50% 50% 20% 20%;
+}
+
+.g-corpo{
+    width:52px;
+    height:62px;
+    margin:2px auto;
+    background:#19aaa0;
+    border:3px solid white;
+    border-radius:10px;
+}
+
+.g-braco{
+    position:absolute;
+    top:48px;
+    width:42px;
+    height:13px;
+    background:#19aaa0;
+    border:3px solid white;
+    border-radius:15px;
+}
+
+.g-braco-esq{
+    left:-1px;
+    transform:rotate(20deg);
+}
+
+.g-braco-dir{
+    right:-1px;
+    transform:rotate(-20deg);
+}
+
+.g-braco-esq::after,
+.g-braco-dir::after{
+    content:"";
+    position:absolute;
+    width:15px;
+    height:15px;
+    background:white;
+    border-radius:50%;
+    top:-4px;
+}
+
+.g-braco-esq::after{
+    left:-8px;
+}
+
+.g-braco-dir::after{
+    right:-8px;
+}
+
+.g-perna{
+    position:absolute;
+    top:103px;
+    width:17px;
+    height:32px;
+    background:#171717;
+    border-radius:5px;
+}
+
+.g-perna-esq{
+    left:34px;
+}
+
+.g-perna-dir{
+    right:34px;
+}
+
+.jogador-exemplo{
+    position:absolute;
+    bottom:3px;
+    left:50%;
+    transform:translateX(-50%);
+    width:135px;
+    height:190px;
+    z-index:9;
+}
+
+.j-cabeca{
+    position:absolute;
+    top:0;
+    left:49px;
+    width:38px;
+    height:42px;
+    background:#b9784d;
+    border:2px solid #222;
+    border-radius:50%;
+    z-index:3;
+}
+
+.j-cabelo{
+    position:absolute;
+    top:-7px;
+    left:44px;
+    width:48px;
+    height:23px;
+    background:#191919;
+    border-radius:50%;
+    z-index:4;
+}
+
+.j-cabelo::after{
+    content:"";
+    position:absolute;
+    width:55px;
+    height:14px;
+    left:-4px;
+    top:4px;
+    border-radius:50%;
+    box-shadow:
+        0 0 0 3px #191919,
+        9px 4px 0 -1px #191919,
+        20px -1px 0 -1px #191919;
+}
+
+.j-corpo{
+    position:absolute;
+    top:39px;
+    left:35px;
+    width:65px;
+    height:80px;
+    background:#e52525;
+    border:3px solid white;
+    border-radius:11px 11px 6px 6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.j-corpo span{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.j-braco{
+    position:absolute;
+    top:53px;
+    width:55px;
+    height:15px;
+    background:#b9784d;
+    border:2px solid #333;
+    border-radius:15px;
+}
+
+.j-braco-esq{
+    left:-2px;
+    transform:rotate(20deg);
+}
+
+.j-braco-dir{
+    right:-2px;
+    transform:rotate(58deg);
+}
+
+.j-braco-esq::before,
+.j-braco-dir::before{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:16px;
+    background:#e52525;
+    top:-3px;
+    border-radius:5px;
+}
+
+.j-braco-esq::before{
+    right:15px;
+}
+
+.j-braco-dir::before{
+    left:15px;
+}
+
+.j-perna{
+    position:absolute;
+    top:111px;
+    width:21px;
+    height:72px;
+    background:white;
+    border:2px solid #333;
+    border-radius:5px;
+}
+
+.j-perna-esq{
+    left:43px;
+    transform:rotate(8deg);
+}
+
+.j-perna-dir{
+    right:43px;
+    transform:rotate(-18deg);
+}
+
+.j-perna::after{
+    content:"";
+    position:absolute;
+    bottom:-18px;
+    left:-1px;
+    width:19px;
+    height:20px;
+    background:#f2f2f2;
+    border-radius:5px;
+}
+
+.bola{
+    position:absolute;
+    bottom:42px;
+    left:58%;
+    transform:translateX(-50%);
+    font-size:35px;
+    z-index:20;
+    transition:all .6s ease;
+}
+
+.bola.chute-esquerda{
+    transform:translate(-240px,-120px);
+}
+
+.bola.chute-meio{
+    transform:translate(-50%,-145px);
+}
+
+.bola.chute-direita{
+    transform:translate(205px,-120px);
+}
+
+.direcoes{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:15px 0;
+}
+
+.direcoes button{
+    padding:12px 18px;
+    border:0;
+    border-radius:9px;
+    background:#102b43;
+    color:white;
+    cursor:pointer;
+}
+
+.direcoes button.selecionado{
+    background:#10dc83;
+    color:#03140d;
+}
+
+.chutar{
+    display:block;
+    margin:15px auto;
+    width:100%;
+    max-width:350px;
+    padding:16px;
+    border:0;
+    border-radius:12px;
+    background:#10dc83;
+    color:#03140d;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.painel{
+    background:#071a2d;
+    border-radius:12px;
+    padding:18px;
+    margin-top:18px;
+}
+
+.painel h2{
+    color:#10dc83;
+    margin-bottom:10px;
+}
+
+.resultado{
+    text-align:center;
+    font-size:20px;
+    margin-top:15px;
+    min-height:25px;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#8295a8;
+    font-size:13px;
+}
+
+.modal-bg{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+    padding:15px;
+}
+
+.modal{
+    width:100%;
+    max-width:420px;
+    background:#092033;
+    border:1px solid #1684a8;
+    border-radius:15px;
+    padding:25px;
+    position:relative;
+}
+
+.modal h2{
+    color:#10dc83;
+    margin-bottom:15px;
+}
+
+.fechar{
+    position:absolute;
+    right:12px;
+    top:10px;
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.pix-box{
+    margin:20px 0;
+    padding:18px;
+    background:#031222;
+    border:1px solid #1684a8;
+    border-radius:12px;
+}
+
+.pix-box strong{
+    display:block;
+    color:#19e890;
+    margin-bottom:10px;
+}
+
+.pix-box span{
+    font-size:16px;
+    font-weight:bold;
+    word-break:break-all;
+}
+
+.modal-btn{
+    width:100%;
+    padding:14px;
+    border:0;
+    border-radius:10px;
+    background:#10dc83;
+    color:#03140d;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.modal-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.modal-input{
+    width:100%;
+    padding:13px;
+    margin:7px 0;
+    border:1px solid #1684a8;
+    border-radius:8px;
+    background:#031222;
+    color:white;
+}
+
+.mensagem{
+    margin-top:12px;
+    text-align:center;
+    font-weight:bold;
+    line-height:1.4;
+}
+
+.sucesso{
+    color:#19e890;
+}
+
+.erro{
+    color:#ff7777;
+}
+
+.aviso{
+    margin-top:12px;
+    padding:10px;
+    background:#031222;
+    border-radius:8px;
+    font-size:12px;
+    color:#aebdcc;
+    line-height:1.4;
+}
+
+@media(max-width:700px){
+
+    header{
+        justify-content:center;
+    }
+
+    .logo{
+        width:100%;
+        text-align:center;
+    }
+
+    .saldo{
+        width:100%;
+    }
+
+    .carteira{
+        grid-template-columns:1fr;
+    }
+
+    .campo{
+        height:310px;
+    }
+
+    .trave{
+        left:8%;
+        width:84%;
+    }
+
+    .jogador-exemplo{
+        transform:translateX(-50%) scale(.88);
+        transform-origin:bottom center;
+    }
+
+    .goleiro-exemplo{
+        transform:translateX(-50%) scale(.9);
+        transform-origin:top center;
+    }
+
+    .bola.chute-esquerda{
+        transform:translate(-110px,-105px);
+    }
+
+    .bola.chute-meio{
+        transform:translate(-50%,-125px);
+    }
+
+    .bola.chute-direita{
+        transform:translate(75px,-105px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+⚽ PENALTY CHALLENGE
+</div>
+
+<div class="menu">
+
+<button onclick="irInicio()">Início</button>
+
+<button onclick="mostrarJogos()">Jogos</button>
+
+<button onclick="mostrarPromocoes()">Promoções</button>
+
+<button class="btn-depositar" onclick="abrirDeposito()">
+💳 Depositar
+</button>
+
+<button class="btn-sacar" onclick="abrirSaque()">
+💰 Sacar
+</button>
+
+<button onclick="mostrarPerfil()">Perfil</button>
+
+</div>
+
+<div class="saldo">
+Saldo<br>
+<strong>
+R$ <span id="saldo">0,00</span>
+</strong>
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="carteira">
+
+<button class="depositar" onclick="abrirDeposito()">
+💳 DEPOSITAR
+</button>
+
+<button class="sacar" onclick="abrirSaque()">
+💰 SACAR
+</button>
+
+</div>
+
+
+<section class="jogo" id="inicio">
+
+<h1>⚽ BATER PÊNALTI</h1>
+
+<div class="info">
+Escolha o valor e a direção do chute.
+</div>
+
+<div class="valores">
+
+<button onclick="selecionarValor(1)">R$ 1</button>
+<button onclick="selecionarValor(5)">R$ 5</button>
+<button onclick="selecionarValor(10)">R$ 10</button>
+<button onclick="selecionarValor(25)">R$ 25</button>
+<button onclick="selecionarValor(50)">R$ 50</button>
+<button onclick="selecionarValor(100)">R$ 100</button>
+
+</div>
+
+<div class="info">
+Valor escolhido:
+<strong>
+R$ <span id="valorEscolhido">10,00</span>
+</strong>
+</div>
+
+
+<div class="campo">
+
+<div class="trave"></div>
+
+<div class="goleiro-exemplo">
+
+<div class="g-cabeca"></div>
+<div class="g-corpo"></div>
+<div class="g-braco g-braco-esq"></div>
+<div class="g-braco g-braco-dir"></div>
+<div class="g-perna g-perna-esq"></div>
+<div class="g-perna g-perna-dir"></div>
+
+</div>
+
+
+<div class="jogador-exemplo">
+
+<div class="j-cabeca"></div>
+<div class="j-cabelo"></div>
+
+<div class="j-corpo">
+<span>10</span>
+</div>
+
+<div class="j-braco j-braco-esq"></div>
+<div class="j-braco j-braco-dir"></div>
+<div class="j-perna j-perna-esq"></div>
+<div class="j-perna j-perna-dir"></div>
+
+</div>
+
+<div class="bola" id="bola">
+⚽
+</div>
+
+</div>
+
+
+<div class="direcoes">
+
+<button onclick="direcao('esquerda')" id="esquerda">
+⬅️ Esquerda
+</button>
+
+<button onclick="direcao('meio')" id="meio">
+⬆️ Meio
+</button>
+
+<button onclick="direcao('direita')" id="direita">
+➡️ Direita
+</button>
+
+</div>
+
+
+<button class="chutar" onclick="chutar()">
+⚽ BATER PÊNALTI
+</button>
+
+<div class="resultado" id="resultado"></div>
+
+</section>
+
+
+<section class="painel">
+
+<h2>📖 COMO FUNCIONA?</h2>
+
+<p>
+Escolha um valor, selecione a direção e bata o pênalti.
 </p>
-�
 
-�
-function abrirDeposito() {{ document.getElementById("deposito").style.display = "flex"; }} function fecharDeposito() {{ document.getElementById("deposito").style.display = "none"; }} function copiarPix() {{ const pix = document.getElementById("pixKey").innerText; navigator.clipboard.writeText(pix).then(() => {{ alert("Chave Pix copiada!"); }}).catch(() => {{ alert("Chave Pix: " + pix); }}); }} document.getElementById("deposito").addEventListener("click", function(e) {{ if (e.target === this) fecharDeposito(); }}); 
-�
-"""
-out = "/mnt/data/index_pix.html" Path(out).write_text(html, encoding="utf-8") print(out)
+<br>
+
+<p>
+Esta página é uma demonstração visual do jogo.
+</p>
+
+</section>
+
+
+<section class="painel">
+
+<h2>📜 HISTÓRICO</h2>
+
+<div id="historico">
+Nenhuma jogada realizada.
+</div>
+
+</section>
+
+</div>
+
+
+<footer>
+Penalty Challenge — demonstração.
+</footer>
+
+
+<!-- DEPÓSITO -->
+
+<div id="modalDeposito" class="modal-bg">
+
+<div class="modal">
+
+<button class="fechar" onclick="fecharModais()">×</button>
+
+<h2>💳 DEPÓSITO VIA PIX</h2>
+
+<p>
+Envie o Pix para a chave abaixo:
+</p>
+
+<div class="pix-box">
+
+<strong>CHAVE PIX</strong>
+
+<span id="chavePix">
+jonatalourenco591@gmail.com
+</span>
+
+</div>
+
+<button class="modal-btn" onclick="copiarPix()">
+📋 COPIAR CHAVE PIX
+</button>
+
+<p id="pixMensagem" class="mensagem"></p>
+
+<div class="aviso">
+O saldo não é alterado apenas ao copiar a chave. 
+Para crédito automático de um pagamento real, é necessária uma integração com confirmação do Pix no backend.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SAQUE -->
+
+<div id="modalSaque" class="modal-bg">
+
+<div class="modal">
+
+<button class="fechar" onclick="fecharModais()">×</button>
+
+<h2>💰 SOLICITAR SAQUE</h2>
+
+<p>
+Saldo disponível:
+</p>
+
+<p style="margin:8px 0 15px;">
+<strong>
+R$ <span id="saldoSaque">0,00</span>
+</strong>
+</p>
+
+<input
+id="valorSaque"
+class="modal-input"
+type="number"
+min="0.01"
+step="0.01"
+placeholder="Valor do saque"
+>
+
+<input
+id="pixSaque"
+class="modal-input"
+type="text"
+placeholder="Sua chave Pix"
+>
+
+<button
+id="btnSaque"
+class="modal-btn"
+onclick="solicitarSaque()">
+
+SOLICITAR SAQUE
+
+</button>
+
+<p id="saqueMensagem" class="mensagem"></p>
+
+<div class="aviso">
+A solicitação é enviada para o endpoint <strong>/api/saque</strong>.
+O pagamento Pix real deve ser autorizado e executado pelo backend/provedor de pagamentos.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let saldo = 0;
+let valor = 10;
+let direcaoEscolhida = null;
+let historico = [];
+
+
+function atualizarSaldo(){
+
+    document.getElementById("saldo").innerText =
+    saldo.toLocaleString("pt-BR",{
+        minimumFractionDigits:2
+    });
+
+}
+
+
+function selecionarValor(v){
+
+    valor = v;
+
+    document.getElementById("valorEscolhido").innerText =
+    v.toLocaleString("pt-BR",{
+        minimumFractionDigits:2
+    });
+
+}
+
+
+function direcao(d){
+
+    direcaoEscolhida = d;
+
+    document.querySelectorAll(".direcoes button")
+    .forEach(btn =>
+        btn.classList.remove("selecionado")
+    );
+
+    document.getElementById(d)
+    .classList.add("selecionado");
+
+}
+
+
+function chutar(){
+
+    if(!direcaoEscolhida){
+
+        document.getElementById("resultado").innerText =
+        "⚠️ Escolha uma direção.";
+
+        return;
+    }
+
+    if(saldo < valor){
+
+        document.getElementById("resultado").innerText =
+        "⚠️ Saldo insuficiente.";
+
+        return;
+    }
+
+    saldo -= valor;
+
+    atualizarSaldo();
+
+    const bola = document.getElementById("bola");
+
+    bola.classList.remove(
+        "chute-esquerda",
+        "chute-meio",
+        "chute-direita"
+    );
+
+    if(direcaoEscolhida === "esquerda"){
+        bola.classList.add("chute-esquerda");
+    }
+
+    if(direcaoEscolhida === "meio"){
+        bola.classList.add("chute-meio");
+    }
+
+    if(direcaoEscolhida === "direita"){
+        bola.classList.add("chute-direita");
+    }
+
+    let direcoes = [
+        "esquerda",
+        "meio",
+        "direita"
+    ];
+
+    let defesa =
+    direcoes[Math.floor(Math.random()*3)];
+
+    let resultado =
+    document.getElementById("resultado");
+
+    if(defesa !== direcaoEscolhida){
+        resultado.innerText = "⚽ GOL!";
+    }else{
+        resultado.innerText = "🧤 DEFENDEU!";
+    }
+
+    historico.unshift(
+        "Valor: R$ " +
+        valor.toLocaleString("pt-BR",{
+            minimumFractionDigits:2
+        }) +
+        " — Direção: " +
+        direcaoEscolhida +
+        " — " +
+        (
+            defesa !== direcaoEscolhida
+            ? "Gol"
+            : "Defendido"
+        )
+    );
+
+    document.getElementById("historico").innerHTML =
+    historico.join("<br>");
+
+    setTimeout(function(){
+
+        bola.classList.remove(
+            "chute-esquerda",
+            "chute-meio",
+            "chute-direita"
+        );
+
+    },800);
+}
+
+
+function abrirDeposito(){
+
+    document.getElementById("pixMensagem").innerText = "";
+
+    document.getElementById("modalDeposito")
+    .style.display = "flex";
+}
+
+
+function abrirSaque(){
+
+    document.getElementById("saldoSaque").innerText =
+    saldo.toLocaleString("pt-BR",{
+        minimumFractionDigits:2
+    });
+
+    document.getElementById("saqueMensagem").innerText = "";
+
+    document.getElementById("saqueMensagem")
+    .className = "mensagem";
+
+    document.getElementById("modalSaque")
+    .style.display = "flex";
+}
+
+
+function fecharModais(){
+
+    document.getElementById("modalDeposito")
+    .style.display = "none";
+
+    document.getElementById("modalSaque")
+    .style.display = "none";
+}
+
+
+function copiarPix(){
+
+    const chave =
+    "jonatalourenco591@gmail.com";
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(chave)
+        .then(function(){
+
+            document.getElementById("pixMensagem").innerText =
+            "✅ Chave Pix copiada!";
+
+            document.getElementById("pixMensagem")
+            .className = "mensagem sucesso";
+
+        })
+        .catch(function(){
+
+            document.getElementById("pixMensagem").innerText =
+            "Chave Pix: " + chave;
+
+        });
+
+    }else{
+
+        document.getElementById("pixMensagem").innerText =
+        "Chave Pix: " + chave;
+
+    }
+}
+
+
+/*
+    SOLICITAÇÃO DE SAQUE
+
+    Este código NÃO movimenta dinheiro diretamente.
+    Ele envia os dados ao backend.
+
+    O backend deverá:
+    - autenticar o usuário;
+    - verificar saldo real;
+    - validar a chave Pix;
+    - registrar a solicitação;
+    - enviar o Pix pelo provedor;
+    - confirmar o pagamento;
+    - atualizar o saldo.
+*/
+
+async function solicitarSaque(){
+
+    const valorInput =
+    document.getElementById("valorSaque").value;
+
+    const pix =
+    document.getElementById("pixSaque").value.trim();
+
+    const mensagem =
+    document.getElementById("saqueMensagem");
+
+    const botao =
+    document.getElementById("btnSaque");
+
+    const valorSaque =
+    Number(valorInput);
+
+    mensagem.innerText = "";
+    mensagem.className = "mensagem";
+
+    if(!valorSaque || valorSaque <= 0){
+
+        mensagem.innerText =
+        "⚠️ Informe um valor válido.";
+
+        mensagem.className =
+        "mensagem erro";
+
+        return;
+    }
+
+    if(valorSaque > saldo){
+
+        mensagem.innerText =
+        "⚠️ Saldo insuficiente para esse saque.";
+
+        mensagem.className =
+        "mensagem erro";
+
+        return;
+    }
+
+    if(!pix){
+
+        mensagem.innerText =
+        "⚠️ Informe sua chave Pix.";
+
+        mensagem.className =
+        "mensagem erro";
+
+        return;
+    }
+
+    botao.disabled = true;
+    botao.innerText = "ENVIANDO...";
+
+    try{
+
+        const resposta =
+        await fetch("/api/saque",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+
+                valor:valorSaque,
+                chavePix:pix
+
+            })
+
+        });
+
+
+        const dados =
+        await resposta.json();
+
+
+        if(!resposta.ok){
+
+            throw new Error(
+                dados.mensagem ||
+                "Não foi possível enviar a solicitação."
+            );
+
+        }
+
+
+        mensagem.innerText =
+        "✅ Solicitação enviada com sucesso. Aguarde a confirmação do pagamento.";
+
+        mensagem.className =
+        "mensagem sucesso";
+
+
+    }catch(erro){
+
+        mensagem.innerText =
+        "⚠️ Não foi possível enviar o saque. O backend de pagamentos ainda precisa estar conectado.";
+
+        mensagem.className =
+        "mensagem erro";
+
+    }finally{
+
+        botao.disabled = false;
+        botao.innerText = "SOLICITAR SAQUE";
+
+    }
+}
+
+
+function irInicio(){
+
+    document.getElementById("inicio")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function mostrarJogos(){
+
+    document.getElementById("inicio")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+function mostrarPromocoes(){
+
+    alert("🎁 Promoções");
+
+}
+
+
+function mostrarPerfil(){
+
+    alert("👤 Perfil");
+
+}
+
+
+atualizarSaldo();
+
+</script>
+
+</body>
+</html>
